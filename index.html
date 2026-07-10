@@ -1,0 +1,1027 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Astrido Toyota Batutulis — Temukan Toyota Impian Anda</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#15181c;
+    --charcoal:#1d2126;
+    --steel:#3a4149;
+    --silver:#c7cdd3;
+    --paper:#f3f1ec;
+    --red:#e10a1c;
+    --red-deep:#9c0713;
+    --line: rgba(243,241,236,0.14);
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--ink);
+    color:var(--paper);
+    font-family:'Inter', sans-serif;
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+  }
+  img,svg{display:block; max-width:100%;}
+  a{color:inherit; text-decoration:none;}
+  .container{max-width:1180px; margin:0 auto; padding:0 28px;}
+  .eyebrow{
+    font-family:'JetBrains Mono', monospace;
+    font-size:12px;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--red);
+  }
+  h1,h2,h3{
+    font-family:'Oswald', sans-serif;
+    text-transform:uppercase;
+    letter-spacing:0.01em;
+    font-weight:600;
+  }
+
+  /* ===== NAV ===== */
+  header{
+    position:sticky; top:0; z-index:50;
+    background:rgba(21,24,28,0.92);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  nav{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:16px 28px;
+    max-width:1180px; margin:0 auto;
+  }
+  .brand{
+    font-family:'Oswald', sans-serif;
+    font-weight:700;
+    font-size:20px;
+    letter-spacing:0.06em;
+    display:flex; align-items:center; gap:10px;
+  }
+  .brand .mark{
+    width:10px; height:22px; background:var(--red);
+    clip-path: polygon(0 0, 100% 20%, 100% 100%, 0% 80%);
+  }
+  .nav-links{display:flex; gap:32px; font-size:14px; font-weight:500;}
+  .nav-links a{opacity:0.8; transition:opacity .2s;}
+  .nav-links a:hover{opacity:1;}
+  .nav-cta{
+    background:var(--red); color:#fff; padding:10px 20px;
+    font-family:'JetBrains Mono',monospace; font-size:12.5px;
+    letter-spacing:0.05em; text-transform:uppercase;
+    border-radius:2px;
+  }
+  .nav-mobile-hide{display:flex;}
+  @media(max-width:760px){ .nav-mobile-hide{display:none;} }
+
+  /* ===== HERO ===== */
+  .hero{
+    position:relative;
+    padding:96px 0 60px;
+    overflow:hidden;
+    background:
+      radial-gradient(ellipse 900px 500px at 80% -10%, rgba(225,10,28,0.16), transparent 60%),
+      linear-gradient(180deg, var(--ink), var(--charcoal));
+    border-bottom:1px solid var(--line);
+  }
+  .hero-grid{
+    display:grid; grid-template-columns:1.05fr 0.95fr; gap:40px; align-items:center;
+  }
+  .hero h1{
+    font-size:clamp(38px, 5.4vw, 64px);
+    line-height:0.98;
+    margin:18px 0 22px;
+  }
+  .hero h1 span{color:var(--red);}
+  .hero p{
+    color:var(--silver); font-size:17px; max-width:460px; margin-bottom:32px;
+  }
+  .hero-actions{display:flex; gap:14px; flex-wrap:wrap;}
+  .btn-primary{
+    background:var(--red); color:#fff; padding:15px 26px;
+    font-weight:600; font-size:14.5px; border-radius:2px;
+    border:1px solid var(--red);
+    transition:background .2s;
+  }
+  .btn-primary:hover{background:var(--red-deep);}
+  .btn-ghost{
+    padding:15px 26px; border:1px solid rgba(243,241,236,0.3); border-radius:2px;
+    font-weight:600; font-size:14.5px;
+  }
+  .btn-ghost:hover{border-color:#fff;}
+
+  .car-wrap{position:relative;}
+  .car-wrap .plate{
+    position:absolute; bottom:-18px; left:50%; transform:translateX(-50%);
+    width:78%; height:26px; background:radial-gradient(ellipse, rgba(0,0,0,0.55), transparent 70%);
+    filter:blur(4px);
+  }
+
+  /* ===== IMAGE SLOT (bisa diganti gambar) ===== */
+  .img-slot{
+    position:relative;
+    display:flex; align-items:center; justify-content:center;
+    overflow:hidden;
+    border-radius:2px;
+  }
+  .img-slot.hero-slot{ min-height:260px; }
+  .img-slot.card-slot{ height:150px; background:rgba(255,255,255,0.02); }
+  .img-slot img.uploaded-photo{
+    position:absolute; inset:0; width:100%; height:100%; object-fit:cover;
+  }
+  .img-slot .placeholder-svg{ transition:opacity .2s; }
+  .img-slot.has-photo .placeholder-svg{ display:none; }
+  .upload-btn, .remove-photo{ display:none; } /* hanya tampil saat mode admin aktif */
+  body.admin-mode .upload-btn, body.admin-mode .remove-photo{ display:flex; }
+  .upload-btn{
+    position:absolute; right:8px; bottom:8px; z-index:5;
+    background:rgba(21,24,28,0.82); border:1px solid var(--line);
+    color:var(--paper); font-family:'JetBrains Mono',monospace;
+    font-size:11px; letter-spacing:0.03em; text-transform:uppercase;
+    padding:8px 12px; border-radius:2px; cursor:pointer;
+    align-items:center; gap:6px;
+    opacity:0; transition:opacity .2s, background .2s;
+  }
+  body.admin-mode .img-slot:hover .upload-btn, body.admin-mode .upload-btn:focus{ opacity:1; }
+  .upload-btn:hover{ background:var(--red); border-color:var(--red); }
+  .upload-btn svg{width:13px; height:13px;}
+  .upload-btn input[type="file"]{
+    position:absolute; inset:0; opacity:0; cursor:pointer; width:100%; height:100%;
+  }
+  .remove-photo{
+    position:absolute; left:8px; top:8px; z-index:5;
+    background:rgba(21,24,28,0.82); border:1px solid var(--line); color:var(--paper);
+    font-size:11px; padding:6px 9px; border-radius:2px; cursor:pointer;
+    opacity:0; transition:opacity .2s;
+    font-family:'JetBrains Mono',monospace;
+  }
+  body.admin-mode .img-slot.has-photo:hover .remove-photo{ opacity:1; }
+  @media(max-width:760px){
+    body.admin-mode .upload-btn, body.admin-mode .remove-photo{ opacity:1; } /* selalu tampil di mobile saat admin */
+  }
+  body.admin-mode .img-slot{ outline:1px dashed rgba(225,10,28,0.4); outline-offset:2px; }
+
+  /* ===== MODE ADMIN ===== */
+  .admin-toggle{
+    position:fixed; right:18px; bottom:18px; z-index:80;
+    background:var(--charcoal); border:1px solid var(--line); color:var(--silver);
+    font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:0.04em;
+    padding:10px 14px; border-radius:20px; cursor:pointer;
+    display:flex; align-items:center; gap:7px;
+    box-shadow:0 4px 16px rgba(0,0,0,0.4);
+  }
+  .admin-toggle:hover{ border-color:var(--red); color:var(--paper); }
+  .admin-toggle .dot{ width:7px; height:7px; border-radius:50%; background:var(--steel); }
+  body.admin-mode .admin-toggle .dot{ background:#7bd88f; }
+  body.admin-mode .admin-toggle{ border-color:#7bd88f; color:var(--paper); }
+
+  .admin-overlay{
+    position:fixed; inset:0; background:rgba(10,11,13,0.72); backdrop-filter:blur(3px);
+    display:none; align-items:center; justify-content:center; z-index:100; padding:20px;
+  }
+  .admin-overlay.show{ display:flex; }
+  .admin-modal{
+    background:var(--charcoal); border:1px solid var(--line); border-radius:4px;
+    padding:28px; width:100%; max-width:340px;
+  }
+  .admin-modal h3{ font-size:16px; text-transform:none; font-family:'Inter',sans-serif; margin-bottom:6px; }
+  .admin-modal p{ font-size:13px; color:var(--silver); margin-bottom:16px; }
+  .admin-modal input{
+    width:100%; background:var(--ink); border:1px solid var(--line); color:var(--paper);
+    padding:12px 13px; font-family:'Inter',sans-serif; font-size:14px; border-radius:2px; margin-bottom:10px;
+  }
+  .admin-modal input:focus{ outline:2px solid var(--red); outline-offset:1px; border-color:var(--red); }
+  .admin-modal-actions{ display:flex; gap:10px; margin-top:6px; }
+  .admin-modal-actions button{
+    flex:1; padding:11px 14px; border-radius:2px; font-size:13px; font-weight:600; cursor:pointer;
+    font-family:'Inter',sans-serif;
+  }
+  .admin-modal-actions .btn-confirm{ background:var(--red); border:1px solid var(--red); color:#fff; }
+  .admin-modal-actions .btn-confirm:hover{ background:var(--red-deep); }
+  .admin-modal-actions .btn-cancel{ background:transparent; border:1px solid var(--line); color:var(--silver); }
+  #adminError{ font-size:12.5px; color:var(--red); margin:-4px 0 10px; display:none; }
+
+  /* ===== DATA PLATE STRIP (signature) ===== */
+  .plate-strip{
+    background:var(--charcoal);
+    border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+  }
+  .plate-strip .container{
+    display:grid; grid-template-columns:repeat(4,1fr);
+    padding:0;
+  }
+  .plate-item{
+    padding:22px 24px;
+    border-right:1px solid var(--line);
+    font-family:'JetBrains Mono', monospace;
+  }
+  .plate-item:last-child{border-right:none;}
+  .plate-item .num{
+    font-size:26px; font-weight:700; color:var(--red);
+    display:flex; align-items:baseline; gap:4px;
+  }
+  .plate-item .num small{font-size:13px; color:var(--silver); font-weight:500;}
+  .plate-item .label{
+    font-size:11px; letter-spacing:0.08em; text-transform:uppercase;
+    color:var(--silver); margin-top:6px;
+  }
+  @media(max-width:760px){
+    .plate-strip .container{grid-template-columns:repeat(2,1fr);}
+    .plate-item:nth-child(2){border-right:none;}
+  }
+
+  /* ===== SECTION HEADERS ===== */
+  section{padding:88px 0;}
+  .sec-head{
+    display:flex; justify-content:space-between; align-items:flex-end;
+    margin-bottom:48px; gap:24px; flex-wrap:wrap;
+    border-bottom:1px solid var(--line); padding-bottom:24px;
+  }
+  .sec-head h2{font-size:clamp(28px,3.4vw,40px);}
+  .sec-head p{color:var(--silver); max-width:380px; font-size:15px;}
+
+  /* ===== LINEUP ===== */
+  .cat-tabs{
+    display:flex; flex-wrap:wrap; gap:10px; margin-bottom:36px;
+  }
+  .cat-tab{
+    background:transparent; border:1px solid var(--line); color:var(--silver);
+    font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:0.04em;
+    text-transform:uppercase; padding:9px 16px; border-radius:20px; cursor:pointer;
+    transition:all .2s;
+  }
+  .cat-tab:hover{ border-color:var(--silver); color:var(--paper); }
+  .cat-tab.active{ background:var(--red); border-color:var(--red); color:#fff; }
+
+  .lineup-grid{
+    display:grid; grid-template-columns:repeat(3,1fr); gap:1px;
+    background:var(--line); border:1px solid var(--line);
+  }
+  .car-card{
+    background:var(--ink); padding:30px 26px 26px;
+    display:flex; flex-direction:column; gap:14px;
+    transition:background .25s;
+  }
+  .car-card:hover{background:var(--charcoal);}
+  .car-card.hidden{display:none;}
+  .car-card .tag{
+    font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--red);
+    letter-spacing:0.08em; text-transform:uppercase;
+  }
+  .car-card h3{font-size:22px; margin-bottom:2px;}
+  .car-card .silhouette{height:110px; display:flex; align-items:center; justify-content:center; opacity:0.92;}
+  .car-card .price{
+    font-family:'JetBrains Mono',monospace; font-size:15px; color:var(--paper);
+    margin-top:auto; padding-top:12px; border-top:1px dashed var(--steel);
+  }
+  .car-card .price small{color:var(--silver); font-size:11px; display:block; letter-spacing:.06em; text-transform:uppercase;}
+  .car-card .specs{display:flex; gap:16px; font-size:12.5px; color:var(--silver);}
+  @media(max-width:900px){ .lineup-grid{grid-template-columns:repeat(2,1fr);} }
+  @media(max-width:600px){ .lineup-grid{grid-template-columns:1fr;} }
+
+  /* ===== WHY US ===== */
+  .why-grid{
+    display:grid; grid-template-columns:repeat(4,1fr); gap:28px;
+  }
+  .why-item .idx{
+    font-family:'JetBrains Mono',monospace; color:var(--red); font-size:13px; margin-bottom:14px;
+  }
+  .why-item h3{font-size:17px; margin-bottom:8px; text-transform:none; font-family:'Inter',sans-serif; font-weight:700;}
+  .why-item p{color:var(--silver); font-size:14px;}
+  @media(max-width:900px){ .why-grid{grid-template-columns:repeat(2,1fr);} }
+  @media(max-width:560px){ .why-grid{grid-template-columns:1fr;} }
+
+  /* ===== TESTIMONIALS ===== */
+  .testi-strip{
+    background:var(--charcoal);
+    border-top:1px solid var(--line); border-bottom:1px solid var(--line);
+  }
+  .testi-grid{
+    display:grid; grid-template-columns:repeat(3,1fr); gap:32px;
+  }
+  .testi-card blockquote{
+    font-size:15.5px; color:var(--paper); margin-bottom:18px; line-height:1.6;
+  }
+  .testi-card .who{
+    font-family:'JetBrains Mono',monospace; font-size:12.5px; color:var(--silver);
+  }
+  .testi-card .who b{color:var(--red);}
+  .stars{color:var(--red); font-size:13px; margin-bottom:10px; letter-spacing:2px;}
+  @media(max-width:900px){ .testi-grid{grid-template-columns:1fr; gap:36px;} }
+
+  /* ===== RATING SUMMARY ===== */
+  .rating-summary{
+    display:flex; align-items:center; gap:18px; margin-bottom:36px;
+    font-family:'JetBrains Mono',monospace;
+  }
+  .rating-summary .avg{font-size:38px; font-weight:700; color:var(--red); line-height:1;}
+  .rating-summary .stars-static{color:var(--red); font-size:18px; letter-spacing:2px;}
+  .rating-summary .count{color:var(--silver); font-size:13px;}
+
+  /* ===== TESTI CARD (dinamis) ===== */
+  .testi-card{ position:relative; }
+  .testi-card .badge-you{
+    position:absolute; top:0; right:0; background:var(--red); color:#fff;
+    font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:0.05em;
+    text-transform:uppercase; padding:4px 8px; border-radius:2px;
+  }
+
+  /* ===== FORM ULASAN ===== */
+  .review-form-wrap{
+    margin-top:56px; padding-top:44px; border-top:1px solid var(--line);
+  }
+  .review-form-wrap h3{
+    font-size:20px; margin-bottom:6px;
+  }
+  .review-form-wrap > p{ color:var(--silver); font-size:14px; margin-bottom:22px; max-width:480px; }
+  .review-form-grid{
+    display:grid; grid-template-columns:1fr 1fr; gap:16px 20px;
+  }
+  .review-form-grid .full{ grid-column:1 / -1; }
+  .star-input{
+    display:flex; gap:6px; margin-bottom:4px;
+  }
+  .star-input button{
+    background:none; border:none; cursor:pointer; padding:2px;
+    font-size:30px; line-height:1; color:var(--steel);
+    transition:color .15s, transform .1s;
+  }
+  .star-input button:hover, .star-input button:focus{ transform:scale(1.1); }
+  .star-input button.active{ color:var(--red); }
+  .star-hint{ font-size:12px; color:var(--silver); margin-bottom:18px; font-family:'JetBrains Mono',monospace; }
+  textarea{
+    width:100%; background:var(--charcoal); border:1px solid var(--line);
+    color:var(--paper); padding:13px 14px; font-family:'Inter',sans-serif; font-size:14px;
+    border-radius:2px; resize:vertical; min-height:90px;
+  }
+  textarea:focus{ outline:2px solid var(--red); outline-offset:1px; border-color:var(--red); }
+  #reviewNote{ font-size:13px; color:var(--silver); margin-top:10px; }
+  #reviewNote.success{ color:#7bd88f; }
+  @media(max-width:640px){ .review-form-grid{grid-template-columns:1fr;} }
+
+  /* ===== CTA / CONTACT ===== */
+  .cta-band{
+    background:linear-gradient(120deg, var(--red-deep), var(--red));
+    padding:56px 0;
+  }
+  .cta-band .container{
+    display:flex; align-items:center; justify-content:space-between; gap:24px; flex-wrap:wrap;
+  }
+  .cta-band h2{font-size:clamp(24px,3vw,34px); max-width:520px;}
+  .cta-band .btn-white{
+    background:#fff; color:var(--ink); padding:16px 30px; font-weight:700;
+    font-size:14.5px; border-radius:2px;
+  }
+
+  .contact-grid{
+    display:grid; grid-template-columns:1fr 1fr; gap:56px;
+  }
+  form{display:flex; flex-direction:column; gap:16px;}
+  label{font-size:12px; text-transform:uppercase; letter-spacing:0.06em; color:var(--silver); margin-bottom:6px; display:block;}
+  input, select{
+    width:100%; background:var(--charcoal); border:1px solid var(--line);
+    color:var(--paper); padding:13px 14px; font-family:'Inter',sans-serif; font-size:14px;
+    border-radius:2px;
+  }
+  input:focus, select:focus{outline:2px solid var(--red); outline-offset:1px; border-color:var(--red);}
+  .field{margin-bottom:2px;}
+  .submit-btn{
+    background:var(--red); color:#fff; border:none; padding:15px 22px;
+    font-weight:700; font-size:14.5px; letter-spacing:0.02em; border-radius:2px;
+    cursor:pointer; margin-top:6px;
+  }
+  .submit-btn:hover{background:var(--red-deep);}
+  .info-block{border-left:2px solid var(--red); padding-left:22px;}
+  .info-block h3{font-size:15px; text-transform:none; font-family:'Inter',sans-serif; margin-bottom:6px;}
+  .info-block p{color:var(--silver); font-size:14px; margin-bottom:24px;}
+  @media(max-width:820px){ .contact-grid{grid-template-columns:1fr;} .hero-grid{grid-template-columns:1fr;} .car-wrap{order:-1;} }
+
+  footer{
+    padding:36px 0; border-top:1px solid var(--line);
+    display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px;
+    font-size:13px; color:var(--silver);
+  }
+
+  .reveal{opacity:0; transform:translateY(16px); transition:opacity .6s ease, transform .6s ease;}
+  .reveal.in{opacity:1; transform:none;}
+  @media (prefers-reduced-motion: reduce){
+    .reveal{opacity:1; transform:none; transition:none;}
+    html{scroll-behavior:auto;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <div class="brand"><span class="mark"></span>Astrido Toyota Batutulis <span style="color:var(--silver); font-weight:400; font-size:13px; margin-left:4px;">| Dealer Resmi Toyota</span></div>
+    <div class="nav-links nav-mobile-hide">
+      <a href="#lineup">Lini Model</a>
+      <a href="#promo">Promo</a>
+      <a href="#testimoni">Testimoni</a>
+      <a href="#kontak">Kontak</a>
+    </div>
+    <a href="#kontak" class="nav-cta">Jadwalkan Test Drive</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="container hero-grid">
+    <div>
+      <div class="eyebrow">// Dealer Resmi — Se-Jabodetabek</div>
+      <h1>Toyota untuk<br>setiap <span>perjalanan</span>.</h1>
+      <p>Dari kota padat hingga jalan luar kota — pilih Toyota yang sesuai gaya hidup Anda. Konsultasi gratis, simulasi kredit instan, dan unit ready stock.</p>
+      <div class="hero-actions">
+        <a href="#lineup" class="btn-primary">Lihat Semua Model</a>
+        <a href="#kontak" class="btn-ghost">Simulasi Kredit</a>
+      </div>
+    </div>
+    <div class="car-wrap">
+      <div class="img-slot hero-slot" id="heroSlot">
+        <svg class="placeholder-svg" viewBox="0 0 520 260" xmlns="http://www.w3.org/2000/svg">
+          <ellipse cx="260" cy="215" rx="210" ry="16" fill="rgba(0,0,0,0.4)"/>
+          <path d="M40 175 C50 120 100 95 150 92 L190 68 C210 58 300 56 330 66 L385 92 C430 96 470 118 480 160 L480 178 L40 178 Z" fill="#e6e6e6"/>
+          <path d="M185 92 L215 70 C230 62 295 61 315 68 L350 92 Z" fill="#2a2f35"/>
+          <rect x="40" y="150" width="440" height="28" fill="#c8c8c8"/>
+          <circle cx="140" cy="185" r="34" fill="#111"/>
+          <circle cx="140" cy="185" r="15" fill="#888"/>
+          <circle cx="400" cy="185" r="34" fill="#111"/>
+          <circle cx="400" cy="185" r="15" fill="#888"/>
+          <rect x="360" y="120" width="18" height="10" fill="#e10a1c"/>
+          <rect x="60" y="122" width="16" height="9" fill="#fff2c2"/>
+        </svg>
+        <button class="remove-photo" onclick="removePhoto('heroSlot')" title="Hapus foto">✕ Hapus</button>
+        <label class="upload-btn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 16l4.586-4.586a2 2 0 0 1 2.828 0L16 16"/><path d="M14 14l1.586-1.586a2 2 0 0 1 2.828 0L20 14"/><circle cx="8" cy="8" r="2"/><rect x="3" y="4" width="18" height="16" rx="2"/></svg>
+          Ganti Foto
+          <input type="file" accept="image/*" onchange="handlePhotoUpload(event, 'heroSlot')">
+        </label>
+      </div>
+      <div class="plate"></div>
+    </div>
+  </div>
+</section>
+
+<div class="plate-strip">
+  <div class="container">
+    <div class="plate-item">
+      <div class="num">21<small>KM/L</small></div>
+      <div class="label">Konsumsi BBM Terbaik</div>
+    </div>
+    <div class="plate-item">
+      <div class="num">5<small>THN</small></div>
+      <div class="label">Garansi Mesin & Transmisi</div>
+    </div>
+    <div class="plate-item">
+      <div class="num">1.5<small>Jt/bln</small></div>
+      <div class="label">Cicilan Mulai Dari</div>
+    </div>
+    <div class="plate-item">
+      <div class="num">120<small>+</small></div>
+      <div class="label">Unit Ready Stock</div>
+    </div>
+  </div>
+</div>
+
+<section id="lineup">
+  <div class="container">
+    <div class="sec-head reveal">
+      <div>
+        <div class="eyebrow">// Lini Model</div>
+        <h2>Pilih Toyota Anda</h2>
+      </div>
+      <p>Lini lengkap Toyota, dari city car hingga niaga. Semua unit bergaransi resmi. Harga bersifat indikatif — hubungi sales untuk info terbaru.</p>
+    </div>
+
+    <div class="cat-tabs" id="catTabs"></div>
+
+    <div class="lineup-grid" id="lineupGrid">
+      <!-- Kartu mobil dirender otomatis lewat JS dari daftar CAR_MODELS -->
+    </div>
+  </div>
+</section>
+
+<section id="promo" style="background:var(--charcoal); border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
+  <div class="container">
+    <div class="sec-head reveal">
+      <div>
+        <div class="eyebrow">// Kenapa Astrido Toyota Batutulis</div>
+        <h2>Beli Mobil, Tanpa Ribet</h2>
+      </div>
+      <p>Proses cepat, transparan, dan didampingi tim sales berpengalaman dari awal survei sampai serah terima unit.</p>
+    </div>
+    <div class="why-grid">
+      <div class="why-item reveal">
+        <div class="idx">01 / Konsultasi</div>
+        <h3>Simulasi Kredit Instan</h3>
+        <p>Hitung cicilan sesuai budget Anda langsung di tempat, tanpa biaya survei.</p>
+      </div>
+      <div class="why-item reveal">
+        <div class="idx">02 / Unit</div>
+        <h3>Ready Stock Semua Warna</h3>
+        <p>Tidak perlu inden lama — sebagian besar model siap dikirim minggu ini.</p>
+      </div>
+      <div class="why-item reveal">
+        <div class="idx">03 / Layanan</div>
+        <h3>Servis & Suku Cadang Resmi</h3>
+        <p>Bengkel resmi Toyota dengan teknisi bersertifikat di seluruh Jabodetabek.</p>
+      </div>
+      <div class="why-item reveal">
+        <div class="idx">04 / Garansi</div>
+        <h3>Trade-In Mobil Lama</h3>
+        <p>Tukar tambah mobil lama Anda dengan harga terbaik, proses di hari yang sama.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="testimoni" class="testi-strip">
+  <div class="container">
+    <div class="sec-head reveal" style="border-bottom:none; margin-bottom:24px;">
+      <div>
+        <div class="eyebrow">// Kata Pelanggan</div>
+        <h2>Dipercaya Ribuan Keluarga</h2>
+      </div>
+    </div>
+
+    <div class="rating-summary reveal">
+      <div class="avg" id="ratingAvg">5.0</div>
+      <div>
+        <div class="stars-static" id="ratingStars">★★★★★</div>
+        <div class="count" id="ratingCount">berdasarkan 3 ulasan</div>
+      </div>
+    </div>
+
+    <div class="testi-grid" id="testiGrid">
+      <!-- Kartu ulasan dirender otomatis lewat JS -->
+    </div>
+
+    <div class="review-form-wrap reveal">
+      <h3>Bagikan Pengalaman Anda</h3>
+      <p>Sudah pernah beli atau servis di Astrido Toyota Batutulis? Beri rating dan ceritakan pengalaman Anda — ulasan akan langsung tampil di halaman ini.</p>
+      <form id="reviewForm">
+        <div class="star-input" id="starInput" role="radiogroup" aria-label="Pilih rating bintang">
+          <button type="button" data-value="1" aria-label="1 bintang">★</button>
+          <button type="button" data-value="2" aria-label="2 bintang">★</button>
+          <button type="button" data-value="3" aria-label="3 bintang">★</button>
+          <button type="button" data-value="4" aria-label="4 bintang">★</button>
+          <button type="button" data-value="5" aria-label="5 bintang">★</button>
+        </div>
+        <div class="star-hint" id="starHint">Klik bintang untuk memberi rating</div>
+        <div class="review-form-grid">
+          <div class="field">
+            <label for="reviewName">Nama Anda</label>
+            <input id="reviewName" type="text" placeholder="Nama Anda" required>
+          </div>
+          <div class="field">
+            <label for="reviewModel">Model Toyota (opsional)</label>
+            <input id="reviewModel" type="text" placeholder="Contoh: Avanza, Fortuner">
+          </div>
+          <div class="field full">
+            <label for="reviewText">Ulasan Anda</label>
+            <textarea id="reviewText" placeholder="Ceritakan pengalaman Anda membeli atau menggunakan Toyota di sini..." required></textarea>
+          </div>
+        </div>
+        <button type="submit" class="submit-btn">Kirim Ulasan</button>
+        <p id="reviewNote"></p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<div class="cta-band">
+  <div class="container">
+    <h2>Siap coba langsung sensasi berkendara Toyota?</h2>
+    <a href="#kontak" class="btn-white">Booking Test Drive Gratis</a>
+  </div>
+</div>
+
+<section id="kontak">
+  <div class="container">
+    <div class="sec-head reveal">
+      <div>
+        <div class="eyebrow">// Hubungi Kami</div>
+        <h2>Konsultasi & Test Drive</h2>
+      </div>
+      <p>Isi form di samping, tim kami akan menghubungi Anda dalam 1x24 jam kerja.</p>
+    </div>
+    <div class="contact-grid">
+      <form onsubmit="event.preventDefault(); document.getElementById('formNote').style.display='block';">
+        <div class="field">
+          <label for="nama">Nama Lengkap</label>
+          <input id="nama" type="text" placeholder="Nama Anda" required>
+        </div>
+        <div class="field">
+          <label for="telp">Nomor WhatsApp</label>
+          <input id="telp" type="tel" placeholder="08xx-xxxx-xxxx" required>
+        </div>
+        <div class="field">
+          <label for="model">Model yang Diminati</label>
+          <select id="model">
+            <option>Toyota Yaris Cross</option>
+            <option>Toyota Avanza</option>
+            <option>Toyota Innova Zenix</option>
+            <option>Toyota Fortuner</option>
+            <option>Toyota Raize</option>
+            <option>Toyota Camry</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="pesan">Catatan (opsional)</label>
+          <input id="pesan" type="text" placeholder="Contoh: ingin simulasi kredit DP 20%">
+        </div>
+        <button type="submit" class="submit-btn">Kirim & Jadwalkan Test Drive</button>
+        <p id="formNote" style="display:none; font-size:13px; color:var(--silver);">Terima kasih! Tim sales kami akan segera menghubungi Anda.</p>
+      </form>
+      <div>
+        <div class="info-block">
+          <h3>Astrido Toyota Batutulis</h3>
+          <p>Jl. Batu Tulis Raya No. 50 CDEF, Jakarta Pusat 10120 — buka Senin–Minggu, 08.30–21.00 WIB.</p>
+        </div>
+        <div class="info-block">
+          <h3>WhatsApp Sales</h3>
+          <p>+62 852-1111-7703 — respon cepat untuk simulasi kredit & jadwal test drive.</p>
+        </div>
+        <div class="info-block">
+          <h3>Layanan Purna Jual</h3>
+          <p>Bengkel resmi & suku cadang tersedia di seluruh cabang Jabodetabek.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container" style="display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px; width:100%;">
+    <span>© 2026 Astrido Toyota Batutulis — Dealer Resmi Toyota.</span>
+    <span>Halaman promosi ini dibuat untuk keperluan demonstrasi.</span>
+  </div>
+</footer>
+
+<script>
+  // ===== Data lini lengkap Toyota =====
+  // Harga bersifat indikatif (OTR Jabodetabek) dan dapat berubah sewaktu-waktu.
+  const CATEGORIES = [
+    { key:'all', label:'Semua' },
+    { key:'hatchback', label:'Hatchback' },
+    { key:'sedan', label:'Sedan' },
+    { key:'mpv', label:'MPV' },
+    { key:'suv', label:'SUV' },
+    { key:'gr', label:'GR Sport' },
+    { key:'ev', label:'Elektrifikasi' },
+    { key:'commercial', label:'Komersial' }
+  ];
+
+  const CAR_MODELS = [
+    { id:'carSlot1',  category:'hatchback', tag:'City Car',        name:'Toyota Agya 1.2 G MT',      price:'Rp 182.000.000', specs:['Bensin','5 Kursi','MT/CVT'],      shape:'hatchback' },
+    { id:'carSlot2',  category:'hatchback', tag:'Hatchback Sporty',name:'Toyota Yaris Cross G HEV',  price:'Rp 399.000.000', specs:['Bensin','5 Kursi','CVT'],         shape:'hatchback' },
+
+    { id:'carSlot3',  category:'sedan',     tag:'Sedan Terjangkau',name:'Toyota Vios',               price:'Rp 326.400.000', specs:['Bensin','5 Kursi','CVT'],         shape:'sedan' },
+    { id:'carSlot4',  category:'sedan',     tag:'Sedan Premium',   name:'Toyota Corolla Altis',      price:'Rp 565.600.000', specs:['Bensin/Hybrid','5 Kursi','CVT'],  shape:'sedan' },
+    { id:'carSlot5',  category:'sedan',     tag:'Sedan Eksekutif', name:'Toyota Camry',              price:'Rp 799.800.000', specs:['Hybrid Tersedia','5 Kursi','AT'], shape:'sedan' },
+
+    { id:'carSlot6',  category:'mpv',       tag:'MPV Ekonomis',    name:'Toyota Calya 1.2 E MT',     price:'Rp 173.600.000', specs:['Bensin','7 Kursi','MT/AT'],       shape:'mpv' },
+    { id:'carSlot7',  category:'mpv',       tag:'MPV Keluarga',    name:'Toyota Avanza 1.3 E MT',    price:'Rp 244.200.000', specs:['Bensin','7 Kursi','MT/AT'],       shape:'mpv' },
+    { id:'carSlot8',  category:'mpv',       tag:'MPV Stylish',     name:'Toyota Veloz 1.5 V HEV',    price:'Rp 303.000.000', specs:['Bensin/Hybrid','7 Kursi','CVT'],  shape:'mpv' },
+    { id:'carSlot9',  category:'mpv',       tag:'MPV Premium',     name:'Toyota Innova Reborn 2.4G', price:'Rp 417.800.000', specs:['Bensin/Hybrid','7 Kursi','CVT'],  shape:'mpv' },
+    { id:'carSlot10', category:'mpv',       tag:'MPV Premium',     name:'Toyota Innova Zenix G HEV', price:'Rp 475.400.000', specs:['Bensin/Hybrid','7 Kursi','CVT'],  shape:'mpv' },
+    { id:'carSlot11', category:'mpv',       tag:'MPV Mewah',       name:'Toyota Alphard 2.5 XE CVT', price:'Rp 1.375.000.000', specs:['Hybrid','7 Kursi','AT'],        shape:'van' },
+
+    { id:'carSlot12', category:'suv',       tag:'SUV Keluarga',    name:'Toyota Rush 1.5 G MT',      price:'Rp 290.100.000', specs:['Bensin','7 Kursi','MT/AT'],       shape:'suv' },
+    { id:'carSlot13', category:'suv',       tag:'Compact SUV',     name:'Toyota Raize 1.2 G MT',     price:'Rp 243.500.000', specs:['Turbo','5 Kursi','CVT'],          shape:'suv' },
+    { id:'carSlot14', category:'suv',       tag:'SUV Hybrid',      name:'Toyota Yaris Cross 1.5GHEV',price:'Rp 399.000.000', specs:['Hybrid','5 Kursi','CVT'],         shape:'suv' },
+    { id:'carSlot15', category:'suv',       tag:'SUV Hybrid',      name:'Toyota Corolla Cross HV GR',price:'Rp 646.500.000', specs:['Hybrid Tersedia','5 Kursi','CVT'],shape:'suv' },
+    { id:'carSlot16', category:'suv',       tag:'SUV Tangguh',     name:'Toyota Fortuner 2.8 VRZ',   price:'Rp 668.700.000', specs:['Diesel','7 Kursi','4x2/4x4'],     shape:'suv' },
+    { id:'carSlot17', category:'suv',       tag:'SUV Legendaris',  name:'Toyota Land Cruiser VXR',   price:'Rp 2.635.400.000', specs:['Diesel/Hybrid','7 Kursi','4x4'],shape:'suv' },
+
+    { id:'carSlot18', category:'gr',        tag:'GR Sport',        name:'Toyota GR Yaris 1.6T AT',   price:'Rp 1.222.300.000', specs:['Turbo AWD','4 Kursi','MT'],       shape:'sport' },
+    { id:'carSlot19', category:'gr',        tag:'GR Sport',        name:'Toyota GR Corolla 1.6 MT',  price:'Rp 1.379.900.000', specs:['Turbo AWD','5 Kursi','MT'],       shape:'sport' },
+    { id:'carSlot20', category:'gr',        tag:'GR Sport',        name:'Toyota GR86 2.4L AT',       price:'Rp 1.091.600.000', specs:['Bensin RWD','4 Kursi','MT'],      shape:'sport' },
+
+    { id:'carSlot21', category:'ev',        tag:'Battery EV',      name:'Toyota bZ4X BEV',           price:'Rp 799.000.000', specs:['Listrik Murni','5 Kursi','AT'],   shape:'suv' },
+    { id:'carSlot22', category:'ev',        tag:'Battery EV',      name:'Toyota Urban Cruiser BEV',  price:'Rp 759.000.000', specs:['Listrik Murni','5 Kursi','AT'],   shape:'suv' },
+
+    { id:'carSlot23', category:'commercial',tag:'Pickup Tangguh',  name:'Toyota Hilux Rangga',       price:'Rp 221.500.000', specs:['Diesel','Double Cabin','MT/AT'],  shape:'pickup' },
+    { id:'carSlot24', category:'commercial',tag:'Kendaraan Niaga', name:'Toyota HiAce Commuter 3.0', price:'Rp 575.400.000', specs:['Diesel','15 Kursi','MT'],         shape:'van' }
+  ];
+
+  const SHAPE_PATHS = {
+    hatchback: '<path d="M10 55 C15 35 40 28 60 27 L75 15 C85 10 130 10 142 16 L165 28 C180 30 192 40 195 52 L195 58 L10 58 Z" fill="#c7cdd3"/><circle cx="55" cy="58" r="12" fill="#15181c"/><circle cx="155" cy="58" r="12" fill="#15181c"/>',
+    sedan:     '<path d="M6 56 C10 38 32 30 55 29 L72 15 C85 8 132 8 148 16 L172 29 C186 31 195 42 197 53 L197 58 L6 58 Z" fill="#c7cdd3"/><circle cx="55" cy="58" r="12" fill="#15181c"/><circle cx="158" cy="58" r="12" fill="#15181c"/>',
+    mpv:       '<path d="M8 55 C12 30 35 26 55 26 L68 14 C80 8 135 8 150 15 L172 26 C185 29 194 40 196 52 L196 58 L8 58 Z" fill="#c7cdd3"/><circle cx="52" cy="58" r="12" fill="#15181c"/><circle cx="158" cy="58" r="12" fill="#15181c"/>',
+    suv:       '<path d="M6 55 C10 26 28 20 48 20 L62 10 C76 4 140 4 158 11 L182 22 C193 25 197 38 198 52 L198 58 L6 58 Z" fill="#c7cdd3"/><circle cx="50" cy="58" r="14" fill="#15181c"/><circle cx="162" cy="58" r="14" fill="#15181c"/>',
+    sport:     '<path d="M8 58 C12 42 30 32 52 30 L70 16 C82 9 128 9 140 16 L162 30 C182 33 194 44 197 54 L197 59 L8 59 Z" fill="#c7cdd3"/><circle cx="52" cy="59" r="11" fill="#15181c"/><circle cx="155" cy="59" r="11" fill="#15181c"/>',
+    pickup:    '<path d="M6 55 L6 40 L60 40 L78 20 L110 20 L110 40 L198 40 L198 58 L6 58 Z" fill="#c7cdd3"/><circle cx="45" cy="58" r="13" fill="#15181c"/><circle cx="168" cy="58" r="13" fill="#15181c"/>',
+    van:       '<path d="M6 55 L6 24 C6 18 12 15 18 15 L188 15 C194 15 198 20 198 26 L198 55 L198 58 L6 58 Z" fill="#c7cdd3"/><circle cx="42" cy="58" r="13" fill="#15181c"/><circle cx="162" cy="58" r="13" fill="#15181c"/>'
+  };
+
+  function carCardHtml(m){
+    return `
+      <div class="car-card reveal in" data-category="${m.category}">
+        <div class="tag">${m.tag}</div>
+        <h3>${m.name}</h3>
+        <div class="img-slot card-slot" id="${m.id}">
+          <svg class="placeholder-svg" viewBox="0 0 200 80" width="160">${SHAPE_PATHS[m.shape]}</svg>
+          <button class="remove-photo" onclick="removePhoto('${m.id}')" title="Hapus foto">✕</button>
+          <label class="upload-btn">📷 Ganti Foto<input type="file" accept="image/*" onchange="handlePhotoUpload(event, '${m.id}')"></label>
+        </div>
+        <div class="specs">${m.specs.map(s=>`<span>${s}</span>`).join('')}</div>
+        <div class="price">${m.price}<small>OTR Jabodetabek — indikatif</small></div>
+      </div>`;
+  }
+
+  function renderLineup(){
+    document.getElementById('lineupGrid').innerHTML = CAR_MODELS.map(carCardHtml).join('');
+  }
+
+  function renderCatTabs(){
+    const wrap = document.getElementById('catTabs');
+    wrap.innerHTML = CATEGORIES.map((c,i)=>
+      `<button class="cat-tab${i===0?' active':''}" data-cat="${c.key}">${c.label}</button>`
+    ).join('');
+    wrap.querySelectorAll('.cat-tab').forEach(btn=>{
+      btn.addEventListener('click', ()=>{
+        wrap.querySelectorAll('.cat-tab').forEach(b=>b.classList.remove('active'));
+        btn.classList.add('active');
+        const cat = btn.dataset.cat;
+        document.querySelectorAll('#lineupGrid .car-card').forEach(card=>{
+          card.classList.toggle('hidden', cat !== 'all' && card.dataset.category !== cat);
+        });
+      });
+    });
+  }
+
+  renderLineup();
+  renderCatTabs();
+
+  // ===== Kustomisasi gambar mobil (khusus admin, tersimpan untuk semua pengunjung) =====
+  const PHOTO_SLOT_IDS = ['heroSlot', ...CAR_MODELS.map(m => m.id)];
+  const hasPhotoStorage = typeof window.storage !== 'undefined' && window.storage;
+
+  function resizeImage(file, maxWidth){
+    return new Promise((resolve, reject)=>{
+      const reader = new FileReader();
+      reader.onload = (e)=>{
+        const img = new Image();
+        img.onload = ()=>{
+          const scale = Math.min(1, maxWidth / img.width);
+          const canvas = document.createElement('canvas');
+          canvas.width = img.width * scale;
+          canvas.height = img.height * scale;
+          const ctx = canvas.getContext('2d');
+          ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+          resolve(canvas.toDataURL('image/jpeg', 0.82));
+        };
+        img.onerror = reject;
+        img.src = e.target.result;
+      };
+      reader.onerror = reject;
+      reader.readAsDataURL(file);
+    });
+  }
+
+  function applyPhotoToSlot(slotId, dataUrl){
+    const slot = document.getElementById(slotId);
+    if(!slot) return;
+    let img = slot.querySelector('img.uploaded-photo');
+    if(!img){
+      img = document.createElement('img');
+      img.className = 'uploaded-photo';
+      img.alt = 'Foto mobil';
+      slot.insertBefore(img, slot.firstChild);
+    }
+    img.src = dataUrl;
+    slot.classList.add('has-photo');
+  }
+
+  async function handlePhotoUpload(event, slotId){
+    const file = event.target.files && event.target.files[0];
+    if(!file) return;
+    if(!file.type.startsWith('image/')){
+      alert('Mohon pilih file gambar (JPG, PNG, atau WebP).');
+      return;
+    }
+    try{
+      const dataUrl = await resizeImage(file, 1000);
+      applyPhotoToSlot(slotId, dataUrl);
+      if(hasPhotoStorage){
+        await window.storage.set('photo:' + slotId, dataUrl, true);
+      }
+    }catch(err){
+      console.error('Gagal memproses gambar:', err);
+      alert('Gagal memproses gambar, coba file lain.');
+    }
+  }
+
+  async function removePhoto(slotId){
+    const slot = document.getElementById(slotId);
+    if(!slot) return;
+    const img = slot.querySelector('img.uploaded-photo');
+    if(img) img.remove();
+    slot.classList.remove('has-photo');
+    const input = slot.querySelector('input[type="file"]');
+    if(input) input.value = '';
+    if(hasPhotoStorage){
+      try{ await window.storage.delete('photo:' + slotId, true); }
+      catch(err){ console.error('Gagal menghapus foto tersimpan:', err); }
+    }
+  }
+
+  async function loadStoredPhotos(){
+    if(!hasPhotoStorage) return;
+    await Promise.all(PHOTO_SLOT_IDS.map(async (slotId)=>{
+      try{
+        const result = await window.storage.get('photo:' + slotId, true);
+        if(result && result.value){ applyPhotoToSlot(slotId, result.value); }
+      }catch(_){ /* belum ada foto tersimpan untuk slot ini */ }
+    }));
+  }
+  loadStoredPhotos();
+
+  // ===== Ulasan Pelanggan (rating custom oleh customer) =====
+  const defaultReviews = [
+    { name:'Rangga P.', model:'Avanza, Bekasi', rating:5, text:'Proses pengajuan kreditnya cepat, DP juga bisa disesuaikan. Mobil datang sesuai jadwal.', ts:3, seed:true },
+    { name:'Dewi S.', model:'Innova Zenix, Depok', rating:5, text:'Sales-nya sabar jelasin tiap fitur, sampai bandingin beberapa tipe biar sesuai kebutuhan keluarga.', ts:2, seed:true },
+    { name:'Fajar A.', model:'Fortuner, Tangerang', rating:5, text:'Trade-in mobil lama saya dihargai wajar, uang mukanya langsung dipotong di hari yang sama.', ts:1, seed:true }
+  ];
+  let allReviews = [...defaultReviews];
+  let selectedRating = 0;
+  const hasStorage = typeof window.storage !== 'undefined' && window.storage;
+
+  function starsHtml(n){
+    let s = '';
+    for(let i=1;i<=5;i++){ s += i<=n ? '★' : '☆'; }
+    return s;
+  }
+
+  function renderReviews(){
+    const grid = document.getElementById('testiGrid');
+    const sorted = [...allReviews].sort((a,b)=> b.ts - a.ts);
+    grid.innerHTML = sorted.map(r => `
+      <div class="testi-card reveal in">
+        ${r.seed ? '' : '<div class="badge-you">Ulasan Baru</div>'}
+        <div class="stars">${starsHtml(r.rating)}</div>
+        <blockquote>${escapeHtml(r.text)}</blockquote>
+        <div class="who"><b>${escapeHtml(r.name)}</b>${r.model ? ' — ' + escapeHtml(r.model) : ''}</div>
+      </div>
+    `).join('');
+
+    const avg = allReviews.reduce((sum,r)=>sum+r.rating,0) / allReviews.length;
+    document.getElementById('ratingAvg').textContent = avg.toFixed(1);
+    document.getElementById('ratingStars').textContent = starsHtml(Math.round(avg));
+    document.getElementById('ratingCount').textContent = `berdasarkan ${allReviews.length} ulasan`;
+  }
+
+  function escapeHtml(str){
+    const div = document.createElement('div');
+    div.textContent = str;
+    return div.innerHTML;
+  }
+
+  // Rating bintang interaktif
+  const starButtons = document.querySelectorAll('#starInput button');
+  const starHint = document.getElementById('starHint');
+  starButtons.forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      selectedRating = parseInt(btn.dataset.value, 10);
+      starButtons.forEach(b=>{
+        b.classList.toggle('active', parseInt(b.dataset.value,10) <= selectedRating);
+      });
+      starHint.textContent = selectedRating + ' dari 5 bintang dipilih';
+    });
+  });
+
+  // Kirim ulasan
+  document.getElementById('reviewForm').addEventListener('submit', async (e)=>{
+    e.preventDefault();
+    const note = document.getElementById('reviewNote');
+    if(selectedRating === 0){
+      note.textContent = 'Mohon pilih rating bintang terlebih dahulu.';
+      note.className = '';
+      return;
+    }
+    const name = document.getElementById('reviewName').value.trim();
+    const model = document.getElementById('reviewModel').value.trim();
+    const text = document.getElementById('reviewText').value.trim();
+    if(!name || !text){
+      note.textContent = 'Mohon isi nama dan ulasan Anda.';
+      note.className = '';
+      return;
+    }
+
+    const review = { name, model, rating: selectedRating, text, ts: Date.now(), seed:false };
+    allReviews.push(review);
+    renderReviews();
+
+    // Simpan agar terlihat oleh pengunjung lain (jika penyimpanan tersedia)
+    if(hasStorage){
+      try{
+        await window.storage.set('review:' + review.ts, JSON.stringify(review), true);
+      }catch(err){
+        console.error('Gagal menyimpan ulasan:', err);
+      }
+    }
+
+    note.textContent = hasStorage
+      ? 'Terima kasih! Ulasan Anda sudah tampil dan akan terlihat oleh pengunjung lain.'
+      : 'Terima kasih! Ulasan Anda tampil di halaman ini selama sesi ini berlangsung.';
+    note.className = 'success';
+    e.target.reset();
+    selectedRating = 0;
+    starButtons.forEach(b=>b.classList.remove('active'));
+    starHint.textContent = 'Klik bintang untuk memberi rating';
+  });
+
+  // Muat ulasan tersimpan dari pengunjung lain (jika ada)
+  async function loadStoredReviews(){
+    if(!hasStorage){ renderReviews(); return; }
+    try{
+      const list = await window.storage.list('review:', true);
+      if(list && list.keys && list.keys.length){
+        const results = await Promise.all(list.keys.map(k => window.storage.get(k, true).catch(()=>null)));
+        results.forEach(r=>{
+          if(r && r.value){
+            try{ allReviews.push(JSON.parse(r.value)); }catch(_){}
+          }
+        });
+      }
+    }catch(err){
+      console.error('Gagal memuat ulasan:', err);
+    }
+    renderReviews();
+  }
+  loadStoredReviews();
+
+  const els = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, {threshold:0.15});
+  els.forEach(el=>io.observe(el));
+</script>
+
+<button class="admin-toggle" id="adminToggle" title="Mode Admin"><span class="dot"></span> <span id="adminToggleLabel">Mode Admin</span></button>
+
+<div class="admin-overlay" id="adminOverlay">
+  <div class="admin-modal">
+    <h3>Masuk Mode Admin</h3>
+    <p>Masukkan kata sandi admin untuk mengaktifkan ganti foto. Perubahan akan tersimpan permanen untuk semua pengunjung.</p>
+    <input type="password" id="adminPassword" placeholder="Kata sandi admin" autocomplete="off">
+    <p id="adminError">Kata sandi salah, coba lagi.</p>
+    <div class="admin-modal-actions">
+      <button class="btn-cancel" id="adminCancel" type="button">Batal</button>
+      <button class="btn-confirm" id="adminConfirm" type="button">Masuk</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  // ===== Mode Admin (ganti foto hanya untuk admin) =====
+  // GANTI kata sandi ini sesuai keinginan Anda:
+  const ADMIN_PASSWORD = 'meivcky358';
+
+  const adminToggle = document.getElementById('adminToggle');
+  const adminOverlay = document.getElementById('adminOverlay');
+  const adminPasswordInput = document.getElementById('adminPassword');
+  const adminError = document.getElementById('adminError');
+  const adminToggleLabel = document.getElementById('adminToggleLabel');
+
+  function setAdminMode(on){
+    document.body.classList.toggle('admin-mode', on);
+    adminToggleLabel.textContent = on ? 'Keluar Mode Admin' : 'Mode Admin';
+  }
+
+  adminToggle.addEventListener('click', ()=>{
+    if(document.body.classList.contains('admin-mode')){
+      setAdminMode(false);
+    } else {
+      adminOverlay.classList.add('show');
+      adminError.style.display = 'none';
+      adminPasswordInput.value = '';
+      adminPasswordInput.focus();
+    }
+  });
+
+  document.getElementById('adminCancel').addEventListener('click', ()=>{
+    adminOverlay.classList.remove('show');
+  });
+
+  document.getElementById('adminConfirm').addEventListener('click', confirmAdminLogin);
+  adminPasswordInput.addEventListener('keydown', (e)=>{ if(e.key === 'Enter') confirmAdminLogin(); });
+
+  function confirmAdminLogin(){
+    if(adminPasswordInput.value === ADMIN_PASSWORD){
+      setAdminMode(true);
+      adminOverlay.classList.remove('show');
+    } else {
+      adminError.style.display = 'block';
+    }
+  }
+</script>
+
+</body>
+</html>
