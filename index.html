@@ -3,19 +3,20 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Astrido Toyota Batutulis — Temukan Toyota Impian Anda</title>
+<title>Geely Maju Mandala Mobilindo — Masa Depan Berkendara, Hari Ini</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
   :root{
-    --ink:#15181c;
-    --charcoal:#1d2126;
-    --steel:#3a4149;
-    --silver:#c7cdd3;
-    --paper:#f3f1ec;
-    --red:#e10a1c;
-    --red-deep:#9c0713;
-    --line: rgba(243,241,236,0.14);
+    --ink:#070b14;
+    --charcoal:#0d1424;
+    --steel:#26314a;
+    --silver:#b7c3da;
+    --paper:#eef3fb;
+    --blue:#0060ff;
+    --blue-deep:#0041b3;
+    --cyan:#28e0ff;
+    --line: rgba(238,243,251,0.12);
   }
   *{box-sizing:border-box; margin:0; padding:0;}
   html{scroll-behavior:smooth;}
@@ -34,19 +35,18 @@
     font-size:12px;
     letter-spacing:0.14em;
     text-transform:uppercase;
-    color:var(--red);
+    color:var(--cyan);
   }
   h1,h2,h3{
-    font-family:'Oswald', sans-serif;
-    text-transform:uppercase;
-    letter-spacing:0.01em;
-    font-weight:600;
+    font-family:'Space Grotesk', sans-serif;
+    letter-spacing:-0.01em;
+    font-weight:700;
   }
 
   /* ===== NAV ===== */
   header{
     position:sticky; top:0; z-index:50;
-    background:rgba(21,24,28,0.92);
+    background:rgba(7,11,20,0.88);
     backdrop-filter:blur(8px);
     border-bottom:1px solid var(--line);
   }
@@ -56,24 +56,24 @@
     max-width:1180px; margin:0 auto;
   }
   .brand{
-    font-family:'Oswald', sans-serif;
+    font-family:'Space Grotesk', sans-serif;
     font-weight:700;
-    font-size:20px;
-    letter-spacing:0.06em;
+    font-size:19px;
+    letter-spacing:-0.01em;
     display:flex; align-items:center; gap:10px;
   }
   .brand .mark{
-    width:10px; height:22px; background:var(--red);
-    clip-path: polygon(0 0, 100% 20%, 100% 100%, 0% 80%);
+    width:22px; height:22px; border-radius:50%;
+    background:conic-gradient(from 200deg, var(--blue), var(--cyan), var(--blue));
   }
   .nav-links{display:flex; gap:32px; font-size:14px; font-weight:500;}
-  .nav-links a{opacity:0.8; transition:opacity .2s;}
+  .nav-links a{opacity:0.75; transition:opacity .2s;}
   .nav-links a:hover{opacity:1;}
   .nav-cta{
-    background:var(--red); color:#fff; padding:10px 20px;
+    background:var(--blue); color:#fff; padding:10px 20px;
     font-family:'JetBrains Mono',monospace; font-size:12.5px;
     letter-spacing:0.05em; text-transform:uppercase;
-    border-radius:2px;
+    border-radius:20px;
   }
   .nav-mobile-hide{display:flex;}
   @media(max-width:760px){ .nav-mobile-hide{display:none;} }
@@ -84,7 +84,8 @@
     padding:96px 0 60px;
     overflow:hidden;
     background:
-      radial-gradient(ellipse 900px 500px at 80% -10%, rgba(225,10,28,0.16), transparent 60%),
+      radial-gradient(ellipse 900px 500px at 80% -10%, rgba(0,96,255,0.22), transparent 60%),
+      radial-gradient(ellipse 700px 400px at 0% 100%, rgba(40,224,255,0.10), transparent 60%),
       linear-gradient(180deg, var(--ink), var(--charcoal));
     border-bottom:1px solid var(--line);
   }
@@ -92,24 +93,27 @@
     display:grid; grid-template-columns:1.05fr 0.95fr; gap:40px; align-items:center;
   }
   .hero h1{
-    font-size:clamp(38px, 5.4vw, 64px);
-    line-height:0.98;
+    font-size:clamp(36px, 5vw, 58px);
+    line-height:1.02;
     margin:18px 0 22px;
   }
-  .hero h1 span{color:var(--red);}
+  .hero h1 span{
+    background:linear-gradient(90deg, var(--cyan), var(--blue));
+    -webkit-background-clip:text; background-clip:text; color:transparent;
+  }
   .hero p{
     color:var(--silver); font-size:17px; max-width:460px; margin-bottom:32px;
   }
   .hero-actions{display:flex; gap:14px; flex-wrap:wrap;}
   .btn-primary{
-    background:var(--red); color:#fff; padding:15px 26px;
-    font-weight:600; font-size:14.5px; border-radius:2px;
-    border:1px solid var(--red);
+    background:var(--blue); color:#fff; padding:15px 26px;
+    font-weight:600; font-size:14.5px; border-radius:30px;
+    border:1px solid var(--blue);
     transition:background .2s;
   }
-  .btn-primary:hover{background:var(--red-deep);}
+  .btn-primary:hover{background:var(--blue-deep);}
   .btn-ghost{
-    padding:15px 26px; border:1px solid rgba(243,241,236,0.3); border-radius:2px;
+    padding:15px 26px; border:1px solid rgba(238,243,251,0.25); border-radius:30px;
     font-weight:600; font-size:14.5px;
   }
   .btn-ghost:hover{border-color:#fff;}
@@ -117,8 +121,8 @@
   .car-wrap{position:relative;}
   .car-wrap .plate{
     position:absolute; bottom:-18px; left:50%; transform:translateX(-50%);
-    width:78%; height:26px; background:radial-gradient(ellipse, rgba(0,0,0,0.55), transparent 70%);
-    filter:blur(4px);
+    width:78%; height:26px; background:radial-gradient(ellipse, rgba(0,96,255,0.35), transparent 70%);
+    filter:blur(6px);
   }
 
   /* ===== IMAGE SLOT (bisa diganti gambar) ===== */
@@ -126,10 +130,10 @@
     position:relative;
     display:flex; align-items:center; justify-content:center;
     overflow:hidden;
-    border-radius:2px;
+    border-radius:8px;
   }
   .img-slot.hero-slot{ min-height:260px; }
-  .img-slot.card-slot{ height:150px; background:rgba(255,255,255,0.02); }
+  .img-slot.card-slot{ height:150px; background:rgba(238,243,251,0.02); border-radius:4px; }
   .img-slot img.uploaded-photo{
     position:absolute; inset:0; width:100%; height:100%; object-fit:cover;
   }
@@ -139,31 +143,31 @@
   body.admin-mode .upload-btn, body.admin-mode .remove-photo{ display:flex; }
   .upload-btn{
     position:absolute; right:8px; bottom:8px; z-index:5;
-    background:rgba(21,24,28,0.82); border:1px solid var(--line);
+    background:rgba(7,11,20,0.85); border:1px solid var(--line);
     color:var(--paper); font-family:'JetBrains Mono',monospace;
     font-size:11px; letter-spacing:0.03em; text-transform:uppercase;
-    padding:8px 12px; border-radius:2px; cursor:pointer;
+    padding:8px 12px; border-radius:20px; cursor:pointer;
     align-items:center; gap:6px;
     opacity:0; transition:opacity .2s, background .2s;
   }
   body.admin-mode .img-slot:hover .upload-btn, body.admin-mode .upload-btn:focus{ opacity:1; }
-  .upload-btn:hover{ background:var(--red); border-color:var(--red); }
+  .upload-btn:hover{ background:var(--blue); border-color:var(--blue); }
   .upload-btn svg{width:13px; height:13px;}
   .upload-btn input[type="file"]{
     position:absolute; inset:0; opacity:0; cursor:pointer; width:100%; height:100%;
   }
   .remove-photo{
     position:absolute; left:8px; top:8px; z-index:5;
-    background:rgba(21,24,28,0.82); border:1px solid var(--line); color:var(--paper);
-    font-size:11px; padding:6px 9px; border-radius:2px; cursor:pointer;
+    background:rgba(7,11,20,0.85); border:1px solid var(--line); color:var(--paper);
+    font-size:11px; padding:6px 9px; border-radius:20px; cursor:pointer;
     opacity:0; transition:opacity .2s;
     font-family:'JetBrains Mono',monospace;
   }
   body.admin-mode .img-slot.has-photo:hover .remove-photo{ opacity:1; }
   @media(max-width:760px){
-    body.admin-mode .upload-btn, body.admin-mode .remove-photo{ opacity:1; } /* selalu tampil di mobile saat admin */
+    body.admin-mode .upload-btn, body.admin-mode .remove-photo{ opacity:1; }
   }
-  body.admin-mode .img-slot{ outline:1px dashed rgba(225,10,28,0.4); outline-offset:2px; }
+  body.admin-mode .img-slot{ outline:1px dashed rgba(40,224,255,0.5); outline-offset:2px; }
 
   /* ===== MODE ADMIN ===== */
   .admin-toggle{
@@ -172,40 +176,40 @@
     font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:0.04em;
     padding:10px 14px; border-radius:20px; cursor:pointer;
     display:flex; align-items:center; gap:7px;
-    box-shadow:0 4px 16px rgba(0,0,0,0.4);
+    box-shadow:0 4px 16px rgba(0,0,0,0.45);
   }
-  .admin-toggle:hover{ border-color:var(--red); color:var(--paper); }
+  .admin-toggle:hover{ border-color:var(--blue); color:var(--paper); }
   .admin-toggle .dot{ width:7px; height:7px; border-radius:50%; background:var(--steel); }
-  body.admin-mode .admin-toggle .dot{ background:#7bd88f; }
-  body.admin-mode .admin-toggle{ border-color:#7bd88f; color:var(--paper); }
+  body.admin-mode .admin-toggle .dot{ background:var(--cyan); }
+  body.admin-mode .admin-toggle{ border-color:var(--cyan); color:var(--paper); }
 
   .admin-overlay{
-    position:fixed; inset:0; background:rgba(10,11,13,0.72); backdrop-filter:blur(3px);
+    position:fixed; inset:0; background:rgba(4,6,12,0.75); backdrop-filter:blur(3px);
     display:none; align-items:center; justify-content:center; z-index:100; padding:20px;
   }
   .admin-overlay.show{ display:flex; }
   .admin-modal{
-    background:var(--charcoal); border:1px solid var(--line); border-radius:4px;
+    background:var(--charcoal); border:1px solid var(--line); border-radius:10px;
     padding:28px; width:100%; max-width:340px;
   }
-  .admin-modal h3{ font-size:16px; text-transform:none; font-family:'Inter',sans-serif; margin-bottom:6px; }
+  .admin-modal h3{ font-size:16px; font-family:'Inter',sans-serif; margin-bottom:6px; }
   .admin-modal p{ font-size:13px; color:var(--silver); margin-bottom:16px; }
   .admin-modal input{
     width:100%; background:var(--ink); border:1px solid var(--line); color:var(--paper);
-    padding:12px 13px; font-family:'Inter',sans-serif; font-size:14px; border-radius:2px; margin-bottom:10px;
+    padding:12px 13px; font-family:'Inter',sans-serif; font-size:14px; border-radius:6px; margin-bottom:10px;
   }
-  .admin-modal input:focus{ outline:2px solid var(--red); outline-offset:1px; border-color:var(--red); }
+  .admin-modal input:focus{ outline:2px solid var(--blue); outline-offset:1px; border-color:var(--blue); }
   .admin-modal-actions{ display:flex; gap:10px; margin-top:6px; }
   .admin-modal-actions button{
-    flex:1; padding:11px 14px; border-radius:2px; font-size:13px; font-weight:600; cursor:pointer;
+    flex:1; padding:11px 14px; border-radius:20px; font-size:13px; font-weight:600; cursor:pointer;
     font-family:'Inter',sans-serif;
   }
-  .admin-modal-actions .btn-confirm{ background:var(--red); border:1px solid var(--red); color:#fff; }
-  .admin-modal-actions .btn-confirm:hover{ background:var(--red-deep); }
+  .admin-modal-actions .btn-confirm{ background:var(--blue); border:1px solid var(--blue); color:#fff; }
+  .admin-modal-actions .btn-confirm:hover{ background:var(--blue-deep); }
   .admin-modal-actions .btn-cancel{ background:transparent; border:1px solid var(--line); color:var(--silver); }
-  #adminError{ font-size:12.5px; color:var(--red); margin:-4px 0 10px; display:none; }
+  #adminError{ font-size:12.5px; color:#ff5c72; margin:-4px 0 10px; display:none; }
 
-  /* ===== DATA PLATE STRIP (signature) ===== */
+  /* ===== CHARGE STATS STRIP (signature) ===== */
   .plate-strip{
     background:var(--charcoal);
     border-top:1px solid var(--line);
@@ -222,7 +226,7 @@
   }
   .plate-item:last-child{border-right:none;}
   .plate-item .num{
-    font-size:26px; font-weight:700; color:var(--red);
+    font-size:26px; font-weight:700; color:var(--cyan);
     display:flex; align-items:baseline; gap:4px;
   }
   .plate-item .num small{font-size:13px; color:var(--silver); font-weight:500;}
@@ -242,7 +246,7 @@
     margin-bottom:48px; gap:24px; flex-wrap:wrap;
     border-bottom:1px solid var(--line); padding-bottom:24px;
   }
-  .sec-head h2{font-size:clamp(28px,3.4vw,40px);}
+  .sec-head h2{font-size:clamp(28px,3.2vw,38px);}
   .sec-head p{color:var(--silver); max-width:380px; font-size:15px;}
 
   /* ===== LINEUP ===== */
@@ -256,7 +260,7 @@
     transition:all .2s;
   }
   .cat-tab:hover{ border-color:var(--silver); color:var(--paper); }
-  .cat-tab.active{ background:var(--red); border-color:var(--red); color:#fff; }
+  .cat-tab.active{ background:var(--blue); border-color:var(--blue); color:#fff; }
 
   .lineup-grid{
     display:grid; grid-template-columns:repeat(3,1fr); gap:1px;
@@ -270,17 +274,18 @@
   .car-card:hover{background:var(--charcoal);}
   .car-card.hidden{display:none;}
   .car-card .tag{
-    font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--red);
+    font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--cyan);
     letter-spacing:0.08em; text-transform:uppercase;
+    display:flex; align-items:center; gap:6px;
   }
-  .car-card h3{font-size:22px; margin-bottom:2px;}
-  .car-card .silhouette{height:110px; display:flex; align-items:center; justify-content:center; opacity:0.92;}
+  .car-card .tag .ev-dot{ width:6px; height:6px; border-radius:50%; background:var(--cyan); display:inline-block; }
+  .car-card h3{font-size:21px; margin-bottom:2px; font-weight:600;}
   .car-card .price{
     font-family:'JetBrains Mono',monospace; font-size:15px; color:var(--paper);
     margin-top:auto; padding-top:12px; border-top:1px dashed var(--steel);
   }
   .car-card .price small{color:var(--silver); font-size:11px; display:block; letter-spacing:.06em; text-transform:uppercase;}
-  .car-card .specs{display:flex; gap:16px; font-size:12.5px; color:var(--silver);}
+  .car-card .specs{display:flex; gap:14px; font-size:12.5px; color:var(--silver); flex-wrap:wrap;}
   @media(max-width:900px){ .lineup-grid{grid-template-columns:repeat(2,1fr);} }
   @media(max-width:600px){ .lineup-grid{grid-template-columns:1fr;} }
 
@@ -289,9 +294,9 @@
     display:grid; grid-template-columns:repeat(4,1fr); gap:28px;
   }
   .why-item .idx{
-    font-family:'JetBrains Mono',monospace; color:var(--red); font-size:13px; margin-bottom:14px;
+    font-family:'JetBrains Mono',monospace; color:var(--cyan); font-size:13px; margin-bottom:14px;
   }
-  .why-item h3{font-size:17px; margin-bottom:8px; text-transform:none; font-family:'Inter',sans-serif; font-weight:700;}
+  .why-item h3{font-size:16px; margin-bottom:8px; font-family:'Inter',sans-serif; font-weight:700;}
   .why-item p{color:var(--silver); font-size:14px;}
   @media(max-width:900px){ .why-grid{grid-template-columns:repeat(2,1fr);} }
   @media(max-width:560px){ .why-grid{grid-template-columns:1fr;} }
@@ -310,8 +315,8 @@
   .testi-card .who{
     font-family:'JetBrains Mono',monospace; font-size:12.5px; color:var(--silver);
   }
-  .testi-card .who b{color:var(--red);}
-  .stars{color:var(--red); font-size:13px; margin-bottom:10px; letter-spacing:2px;}
+  .testi-card .who b{color:var(--cyan);}
+  .stars{color:var(--cyan); font-size:13px; margin-bottom:10px; letter-spacing:2px;}
   @media(max-width:900px){ .testi-grid{grid-template-columns:1fr; gap:36px;} }
 
   /* ===== RATING SUMMARY ===== */
@@ -319,16 +324,16 @@
     display:flex; align-items:center; gap:18px; margin-bottom:36px;
     font-family:'JetBrains Mono',monospace;
   }
-  .rating-summary .avg{font-size:38px; font-weight:700; color:var(--red); line-height:1;}
-  .rating-summary .stars-static{color:var(--red); font-size:18px; letter-spacing:2px;}
+  .rating-summary .avg{font-size:38px; font-weight:700; color:var(--cyan); line-height:1;}
+  .rating-summary .stars-static{color:var(--cyan); font-size:18px; letter-spacing:2px;}
   .rating-summary .count{color:var(--silver); font-size:13px;}
 
   /* ===== TESTI CARD (dinamis) ===== */
   .testi-card{ position:relative; }
   .testi-card .badge-you{
-    position:absolute; top:0; right:0; background:var(--red); color:#fff;
+    position:absolute; top:0; right:0; background:var(--blue); color:#fff;
     font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:0.05em;
-    text-transform:uppercase; padding:4px 8px; border-radius:2px;
+    text-transform:uppercase; padding:4px 8px; border-radius:20px;
   }
 
   /* ===== FORM ULASAN ===== */
@@ -336,7 +341,7 @@
     margin-top:56px; padding-top:44px; border-top:1px solid var(--line);
   }
   .review-form-wrap h3{
-    font-size:20px; margin-bottom:6px;
+    font-size:19px; margin-bottom:6px;
   }
   .review-form-wrap > p{ color:var(--silver); font-size:14px; margin-bottom:22px; max-width:480px; }
   .review-form-grid{
@@ -352,30 +357,30 @@
     transition:color .15s, transform .1s;
   }
   .star-input button:hover, .star-input button:focus{ transform:scale(1.1); }
-  .star-input button.active{ color:var(--red); }
+  .star-input button.active{ color:var(--cyan); }
   .star-hint{ font-size:12px; color:var(--silver); margin-bottom:18px; font-family:'JetBrains Mono',monospace; }
   textarea{
     width:100%; background:var(--charcoal); border:1px solid var(--line);
     color:var(--paper); padding:13px 14px; font-family:'Inter',sans-serif; font-size:14px;
-    border-radius:2px; resize:vertical; min-height:90px;
+    border-radius:6px; resize:vertical; min-height:90px;
   }
-  textarea:focus{ outline:2px solid var(--red); outline-offset:1px; border-color:var(--red); }
+  textarea:focus{ outline:2px solid var(--blue); outline-offset:1px; border-color:var(--blue); }
   #reviewNote{ font-size:13px; color:var(--silver); margin-top:10px; }
-  #reviewNote.success{ color:#7bd88f; }
+  #reviewNote.success{ color:var(--cyan); }
   @media(max-width:640px){ .review-form-grid{grid-template-columns:1fr;} }
 
   /* ===== CTA / CONTACT ===== */
   .cta-band{
-    background:linear-gradient(120deg, var(--red-deep), var(--red));
+    background:linear-gradient(120deg, var(--blue-deep), var(--blue));
     padding:56px 0;
   }
   .cta-band .container{
     display:flex; align-items:center; justify-content:space-between; gap:24px; flex-wrap:wrap;
   }
-  .cta-band h2{font-size:clamp(24px,3vw,34px); max-width:520px;}
+  .cta-band h2{font-size:clamp(22px,2.8vw,32px); max-width:520px;}
   .cta-band .btn-white{
     background:#fff; color:var(--ink); padding:16px 30px; font-weight:700;
-    font-size:14.5px; border-radius:2px;
+    font-size:14.5px; border-radius:30px;
   }
 
   .contact-grid{
@@ -386,18 +391,18 @@
   input, select{
     width:100%; background:var(--charcoal); border:1px solid var(--line);
     color:var(--paper); padding:13px 14px; font-family:'Inter',sans-serif; font-size:14px;
-    border-radius:2px;
+    border-radius:6px;
   }
-  input:focus, select:focus{outline:2px solid var(--red); outline-offset:1px; border-color:var(--red);}
+  input:focus, select:focus{outline:2px solid var(--blue); outline-offset:1px; border-color:var(--blue);}
   .field{margin-bottom:2px;}
   .submit-btn{
-    background:var(--red); color:#fff; border:none; padding:15px 22px;
-    font-weight:700; font-size:14.5px; letter-spacing:0.02em; border-radius:2px;
+    background:var(--blue); color:#fff; border:none; padding:15px 22px;
+    font-weight:700; font-size:14.5px; letter-spacing:0.02em; border-radius:30px;
     cursor:pointer; margin-top:6px;
   }
-  .submit-btn:hover{background:var(--red-deep);}
-  .info-block{border-left:2px solid var(--red); padding-left:22px;}
-  .info-block h3{font-size:15px; text-transform:none; font-family:'Inter',sans-serif; margin-bottom:6px;}
+  .submit-btn:hover{background:var(--blue-deep);}
+  .info-block{border-left:2px solid var(--blue); padding-left:22px;}
+  .info-block h3{font-size:15px; font-family:'Inter',sans-serif; margin-bottom:6px;}
   .info-block p{color:var(--silver); font-size:14px; margin-bottom:24px;}
   @media(max-width:820px){ .contact-grid{grid-template-columns:1fr;} .hero-grid{grid-template-columns:1fr;} .car-wrap{order:-1;} }
 
@@ -419,7 +424,7 @@
 
 <header>
   <nav>
-    <div class="brand"><span class="mark"></span>Astrido Toyota Batutulis <span style="color:var(--silver); font-weight:400; font-size:13px; margin-left:4px;">| Dealer Resmi Toyota</span></div>
+    <div class="brand"><span class="mark"></span>Geely Maju Mandala Mobilindo <span style="color:var(--silver); font-weight:400; font-size:13px; margin-left:4px;">| Dealer Resmi Geely</span></div>
     <div class="nav-links nav-mobile-hide">
       <a href="#lineup">Lini Model</a>
       <a href="#promo">Promo</a>
@@ -433,9 +438,9 @@
 <section class="hero">
   <div class="container hero-grid">
     <div>
-      <div class="eyebrow">// Dealer Resmi — Se-Jabodetabek</div>
-      <h1>Toyota untuk<br>setiap <span>perjalanan</span>.</h1>
-      <p>Dari kota padat hingga jalan luar kota — pilih Toyota yang sesuai gaya hidup Anda. Konsultasi gratis, simulasi kredit instan, dan unit ready stock.</p>
+      <div class="eyebrow">// Dealer Resmi Geely — Se-Jabodetabek</div>
+      <h1>Masa depan<br>berkendara, <span>hari ini.</span></h1>
+      <p>Geely menghadirkan teknologi listrik dan hybrid terbaru dengan desain premium. Konsultasi gratis, simulasi kredit instan, dan unit ready stock.</p>
       <div class="hero-actions">
         <a href="#lineup" class="btn-primary">Lihat Semua Model</a>
         <a href="#kontak" class="btn-ghost">Simulasi Kredit</a>
@@ -444,16 +449,16 @@
     <div class="car-wrap">
       <div class="img-slot hero-slot" id="heroSlot">
         <svg class="placeholder-svg" viewBox="0 0 520 260" xmlns="http://www.w3.org/2000/svg">
-          <ellipse cx="260" cy="215" rx="210" ry="16" fill="rgba(0,0,0,0.4)"/>
-          <path d="M40 175 C50 120 100 95 150 92 L190 68 C210 58 300 56 330 66 L385 92 C430 96 470 118 480 160 L480 178 L40 178 Z" fill="#e6e6e6"/>
-          <path d="M185 92 L215 70 C230 62 295 61 315 68 L350 92 Z" fill="#2a2f35"/>
-          <rect x="40" y="150" width="440" height="28" fill="#c8c8c8"/>
-          <circle cx="140" cy="185" r="34" fill="#111"/>
-          <circle cx="140" cy="185" r="15" fill="#888"/>
-          <circle cx="400" cy="185" r="34" fill="#111"/>
-          <circle cx="400" cy="185" r="15" fill="#888"/>
-          <rect x="360" y="120" width="18" height="10" fill="#e10a1c"/>
-          <rect x="60" y="122" width="16" height="9" fill="#fff2c2"/>
+          <ellipse cx="260" cy="215" rx="210" ry="16" fill="rgba(0,96,255,0.25)"/>
+          <path d="M40 175 C50 118 105 92 155 90 L195 66 C218 55 305 54 335 65 L390 90 C432 95 470 118 480 160 L480 178 L40 178 Z" fill="#dfe7f5"/>
+          <path d="M190 90 L220 68 C235 60 298 59 318 66 L352 90 Z" fill="#0d1424"/>
+          <rect x="40" y="150" width="440" height="28" fill="#c3cfe4"/>
+          <circle cx="140" cy="185" r="34" fill="#0a0f1c"/>
+          <circle cx="140" cy="185" r="15" fill="#28e0ff" opacity="0.7"/>
+          <circle cx="400" cy="185" r="34" fill="#0a0f1c"/>
+          <circle cx="400" cy="185" r="15" fill="#28e0ff" opacity="0.7"/>
+          <rect x="362" y="118" width="20" height="8" fill="#28e0ff"/>
+          <rect x="58" y="120" width="18" height="8" fill="#28e0ff"/>
         </svg>
         <button class="remove-photo" onclick="removePhoto('heroSlot')" title="Hapus foto">✕ Hapus</button>
         <label class="upload-btn">
@@ -470,20 +475,20 @@
 <div class="plate-strip">
   <div class="container">
     <div class="plate-item">
-      <div class="num">21<small>KM/L</small></div>
-      <div class="label">Konsumsi BBM Terbaik</div>
+      <div class="num">430<small>KM</small></div>
+      <div class="label">Jarak Tempuh Terjauh</div>
     </div>
     <div class="plate-item">
-      <div class="num">5<small>THN</small></div>
-      <div class="label">Garansi Mesin & Transmisi</div>
+      <div class="num">30<small>MENIT</small></div>
+      <div class="label">Fast Charging 30–80%</div>
     </div>
     <div class="plate-item">
-      <div class="num">1.5<small>Jt/bln</small></div>
-      <div class="label">Cicilan Mulai Dari</div>
+      <div class="num">8<small>THN</small></div>
+      <div class="label">Garansi Baterai</div>
     </div>
     <div class="plate-item">
-      <div class="num">120<small>+</small></div>
-      <div class="label">Unit Ready Stock</div>
+      <div class="num">25<small>+</small></div>
+      <div class="label">Dealer Resmi Se-Indonesia</div>
     </div>
   </div>
 </div>
@@ -493,9 +498,9 @@
     <div class="sec-head reveal">
       <div>
         <div class="eyebrow">// Lini Model</div>
-        <h2>Pilih Toyota Anda</h2>
+        <h2>Pilih Geely Anda</h2>
       </div>
-      <p>Lini lengkap Toyota, dari city car hingga niaga. Semua unit bergaransi resmi. Harga bersifat indikatif — hubungi sales untuk info terbaru.</p>
+      <p>Lini lengkap Geely yang tersedia di Indonesia — dari EV kompak hingga SUV premium. Harga bersifat indikatif — hubungi sales untuk info terbaru.</p>
     </div>
 
     <div class="cat-tabs" id="catTabs"></div>
@@ -510,10 +515,10 @@
   <div class="container">
     <div class="sec-head reveal">
       <div>
-        <div class="eyebrow">// Kenapa Astrido Toyota Batutulis</div>
-        <h2>Beli Mobil, Tanpa Ribet</h2>
+        <div class="eyebrow">// Kenapa Geely Maju Mandala Mobilindo</div>
+        <h2>Beli Mobil Listrik, Tanpa Ragu</h2>
       </div>
-      <p>Proses cepat, transparan, dan didampingi tim sales berpengalaman dari awal survei sampai serah terima unit.</p>
+      <p>Proses cepat, transparan, dan didampingi tim sales yang paham teknologi EV dari awal survei sampai serah terima unit.</p>
     </div>
     <div class="why-grid">
       <div class="why-item reveal">
@@ -522,14 +527,14 @@
         <p>Hitung cicilan sesuai budget Anda langsung di tempat, tanpa biaya survei.</p>
       </div>
       <div class="why-item reveal">
-        <div class="idx">02 / Unit</div>
-        <h3>Ready Stock Semua Warna</h3>
-        <p>Tidak perlu inden lama — sebagian besar model siap dikirim minggu ini.</p>
+        <div class="idx">02 / Charging</div>
+        <h3>Home Charger Gratis</h3>
+        <p>Setiap pembelian unit EV mendapat instalasi home charger tanpa biaya tambahan.</p>
       </div>
       <div class="why-item reveal">
         <div class="idx">03 / Layanan</div>
-        <h3>Servis & Suku Cadang Resmi</h3>
-        <p>Bengkel resmi Toyota dengan teknisi bersertifikat di seluruh Jabodetabek.</p>
+        <h3>Servis & Baterai Resmi</h3>
+        <p>Bengkel resmi Geely dengan teknisi bersertifikat EV di seluruh Jabodetabek.</p>
       </div>
       <div class="why-item reveal">
         <div class="idx">04 / Garansi</div>
@@ -545,7 +550,7 @@
     <div class="sec-head reveal" style="border-bottom:none; margin-bottom:24px;">
       <div>
         <div class="eyebrow">// Kata Pelanggan</div>
-        <h2>Dipercaya Ribuan Keluarga</h2>
+        <h2>Dipercaya Pengguna EV Indonesia</h2>
       </div>
     </div>
 
@@ -563,7 +568,7 @@
 
     <div class="review-form-wrap reveal">
       <h3>Bagikan Pengalaman Anda</h3>
-      <p>Sudah pernah beli atau servis di Astrido Toyota Batutulis? Beri rating dan ceritakan pengalaman Anda — ulasan akan langsung tampil di halaman ini.</p>
+      <p>Sudah pernah beli atau servis di Geely Maju Mandala Mobilindo? Beri rating dan ceritakan pengalaman Anda — ulasan akan langsung tampil di halaman ini.</p>
       <form id="reviewForm">
         <div class="star-input" id="starInput" role="radiogroup" aria-label="Pilih rating bintang">
           <button type="button" data-value="1" aria-label="1 bintang">★</button>
@@ -579,12 +584,12 @@
             <input id="reviewName" type="text" placeholder="Nama Anda" required>
           </div>
           <div class="field">
-            <label for="reviewModel">Model Toyota (opsional)</label>
-            <input id="reviewModel" type="text" placeholder="Contoh: Avanza, Fortuner">
+            <label for="reviewModel">Model Geely (opsional)</label>
+            <input id="reviewModel" type="text" placeholder="Contoh: EX5, Coolray">
           </div>
           <div class="field full">
             <label for="reviewText">Ulasan Anda</label>
-            <textarea id="reviewText" placeholder="Ceritakan pengalaman Anda membeli atau menggunakan Toyota di sini..." required></textarea>
+            <textarea id="reviewText" placeholder="Ceritakan pengalaman Anda membeli atau menggunakan Geely di sini..." required></textarea>
           </div>
         </div>
         <button type="submit" class="submit-btn">Kirim Ulasan</button>
@@ -596,7 +601,7 @@
 
 <div class="cta-band">
   <div class="container">
-    <h2>Siap coba langsung sensasi berkendara Toyota?</h2>
+    <h2>Siap coba langsung sensasi berkendara listrik?</h2>
     <a href="#kontak" class="btn-white">Booking Test Drive Gratis</a>
   </div>
 </div>
@@ -623,12 +628,10 @@
         <div class="field">
           <label for="model">Model yang Diminati</label>
           <select id="model">
-            <option>Toyota Yaris Cross</option>
-            <option>Toyota Avanza</option>
-            <option>Toyota Innova Zenix</option>
-            <option>Toyota Fortuner</option>
-            <option>Toyota Raize</option>
-            <option>Toyota Camry</option>
+            <option>Geely EX2</option>
+            <option>Geely EX5</option>
+            <option>Geely Coolray</option>
+            <option>Geely Starray EM-i</option>
           </select>
         </div>
         <div class="field">
@@ -640,16 +643,16 @@
       </form>
       <div>
         <div class="info-block">
-          <h3>Astrido Toyota Batutulis</h3>
-          <p>Jl. Batu Tulis Raya No. 50 CDEF, Jakarta Pusat 10120 — buka Senin–Minggu, 08.30–21.00 WIB.</p>
+          <h3>Geely Maju Mandala Mobilindo</h3>
+          <p>Jl Batu Tulis Raya No 15 Kebon Kelapa Jakarta Pusat — buka Senin–Sabtu, 08.00–20.00 WIB.</p>
         </div>
         <div class="info-block">
           <h3>WhatsApp Sales</h3>
-          <p>+62 852-1111-7703 — respon cepat untuk simulasi kredit & jadwal test drive.</p>
+          <p>+62 852-1111-7708 — respon cepat untuk simulasi kredit & jadwal test drive.</p>
         </div>
         <div class="info-block">
           <h3>Layanan Purna Jual</h3>
-          <p>Bengkel resmi & suku cadang tersedia di seluruh cabang Jabodetabek.</p>
+          <p>Bengkel resmi & jaringan fast charging tersedia di seluruh cabang Jabodetabek.</p>
         </div>
       </div>
     </div>
@@ -658,72 +661,40 @@
 
 <footer>
   <div class="container" style="display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px; width:100%;">
-    <span>© 2026 Astrido Toyota Batutulis — Dealer Resmi Toyota.</span>
+    <span>© 2026 Geely Maju Mandala Mobilindo — Dealer Resmi Geely.</span>
     <span>Halaman promosi ini dibuat untuk keperluan demonstrasi.</span>
   </div>
 </footer>
 
 <script>
-  // ===== Data lini lengkap Toyota =====
-  // Harga bersifat indikatif (OTR Jabodetabek) dan dapat berubah sewaktu-waktu.
+  // ===== Data lini Geely yang benar-benar dijual di Indonesia =====
+  // Harga bersifat indikatif (OTR Jabodetabek, per estimasi 2026) dan dapat berubah sewaktu-waktu.
   const CATEGORIES = [
     { key:'all', label:'Semua' },
-    { key:'hatchback', label:'Hatchback' },
-    { key:'sedan', label:'Sedan' },
-    { key:'mpv', label:'MPV' },
-    { key:'suv', label:'SUV' },
-    { key:'gr', label:'GR Sport' },
-    { key:'ev', label:'Elektrifikasi' },
-    { key:'commercial', label:'Komersial' }
+    { key:'ev', label:'Listrik (EV)' },
+    { key:'hybrid', label:'Hybrid' },
+    { key:'turbo', label:'Bensin Turbo' }
   ];
 
   const CAR_MODELS = [
-    { id:'carSlot1',  category:'hatchback', tag:'City Car',        name:'Toyota Agya 1.2 G MT',      price:'Rp 182.000.000', specs:['Bensin','5 Kursi','MT/CVT'],      shape:'hatchback' },
-    { id:'carSlot2',  category:'hatchback', tag:'Hatchback Sporty',name:'Toyota Yaris Cross G HEV',  price:'Rp 399.000.000', specs:['Bensin','5 Kursi','CVT'],         shape:'hatchback' },
-
-    { id:'carSlot3',  category:'sedan',     tag:'Sedan Terjangkau',name:'Toyota Vios',               price:'Rp 326.400.000', specs:['Bensin','5 Kursi','CVT'],         shape:'sedan' },
-    { id:'carSlot4',  category:'sedan',     tag:'Sedan Premium',   name:'Toyota Corolla Altis',      price:'Rp 565.600.000', specs:['Bensin/Hybrid','5 Kursi','CVT'],  shape:'sedan' },
-    { id:'carSlot5',  category:'sedan',     tag:'Sedan Eksekutif', name:'Toyota Camry',              price:'Rp 799.800.000', specs:['Hybrid Tersedia','5 Kursi','AT'], shape:'sedan' },
-
-    { id:'carSlot6',  category:'mpv',       tag:'MPV Ekonomis',    name:'Toyota Calya 1.2 E MT',     price:'Rp 173.600.000', specs:['Bensin','7 Kursi','MT/AT'],       shape:'mpv' },
-    { id:'carSlot7',  category:'mpv',       tag:'MPV Keluarga',    name:'Toyota Avanza 1.3 E MT',    price:'Rp 244.200.000', specs:['Bensin','7 Kursi','MT/AT'],       shape:'mpv' },
-    { id:'carSlot8',  category:'mpv',       tag:'MPV Stylish',     name:'Toyota Veloz 1.5 V HEV',    price:'Rp 303.000.000', specs:['Bensin/Hybrid','7 Kursi','CVT'],  shape:'mpv' },
-    { id:'carSlot9',  category:'mpv',       tag:'MPV Premium',     name:'Toyota Innova Reborn 2.4G', price:'Rp 417.800.000', specs:['Bensin/Hybrid','7 Kursi','CVT'],  shape:'mpv' },
-    { id:'carSlot10', category:'mpv',       tag:'MPV Premium',     name:'Toyota Innova Zenix G HEV', price:'Rp 475.400.000', specs:['Bensin/Hybrid','7 Kursi','CVT'],  shape:'mpv' },
-    { id:'carSlot11', category:'mpv',       tag:'MPV Mewah',       name:'Toyota Alphard 2.5 XE CVT', price:'Rp 1.375.000.000', specs:['Hybrid','7 Kursi','AT'],        shape:'van' },
-
-    { id:'carSlot12', category:'suv',       tag:'SUV Keluarga',    name:'Toyota Rush 1.5 G MT',      price:'Rp 290.100.000', specs:['Bensin','7 Kursi','MT/AT'],       shape:'suv' },
-    { id:'carSlot13', category:'suv',       tag:'Compact SUV',     name:'Toyota Raize 1.2 G MT',     price:'Rp 243.500.000', specs:['Turbo','5 Kursi','CVT'],          shape:'suv' },
-    { id:'carSlot14', category:'suv',       tag:'SUV Hybrid',      name:'Toyota Yaris Cross 1.5GHEV',price:'Rp 399.000.000', specs:['Hybrid','5 Kursi','CVT'],         shape:'suv' },
-    { id:'carSlot15', category:'suv',       tag:'SUV Hybrid',      name:'Toyota Corolla Cross HV GR',price:'Rp 646.500.000', specs:['Hybrid Tersedia','5 Kursi','CVT'],shape:'suv' },
-    { id:'carSlot16', category:'suv',       tag:'SUV Tangguh',     name:'Toyota Fortuner 2.8 VRZ',   price:'Rp 668.700.000', specs:['Diesel','7 Kursi','4x2/4x4'],     shape:'suv' },
-    { id:'carSlot17', category:'suv',       tag:'SUV Legendaris',  name:'Toyota Land Cruiser VXR',   price:'Rp 2.635.400.000', specs:['Diesel/Hybrid','7 Kursi','4x4'],shape:'suv' },
-
-    { id:'carSlot18', category:'gr',        tag:'GR Sport',        name:'Toyota GR Yaris 1.6T AT',   price:'Rp 1.222.300.000', specs:['Turbo AWD','4 Kursi','MT'],       shape:'sport' },
-    { id:'carSlot19', category:'gr',        tag:'GR Sport',        name:'Toyota GR Corolla 1.6 MT',  price:'Rp 1.379.900.000', specs:['Turbo AWD','5 Kursi','MT'],       shape:'sport' },
-    { id:'carSlot20', category:'gr',        tag:'GR Sport',        name:'Toyota GR86 2.4L AT',       price:'Rp 1.091.600.000', specs:['Bensin RWD','4 Kursi','MT'],      shape:'sport' },
-
-    { id:'carSlot21', category:'ev',        tag:'Battery EV',      name:'Toyota bZ4X BEV',           price:'Rp 799.000.000', specs:['Listrik Murni','5 Kursi','AT'],   shape:'suv' },
-    { id:'carSlot22', category:'ev',        tag:'Battery EV',      name:'Toyota Urban Cruiser BEV',  price:'Rp 759.000.000', specs:['Listrik Murni','5 Kursi','AT'],   shape:'suv' },
-
-    { id:'carSlot23', category:'commercial',tag:'Pickup Tangguh',  name:'Toyota Hilux Rangga',       price:'Rp 221.500.000', specs:['Diesel','Double Cabin','MT/AT'],  shape:'pickup' },
-    { id:'carSlot24', category:'commercial',tag:'Kendaraan Niaga', name:'Toyota HiAce Commuter 3.0', price:'Rp 575.400.000', specs:['Diesel','15 Kursi','MT'],         shape:'van' }
+    { id:'carSlot1', category:'ev',     tag:'EV Compact',  name:'Geely EX2 Pro',       price:'Rp 239.900.000', specs:['Listrik Murni','5 Kursi','Baterai 40,8 kWh'],  shape:'hatchback' },
+    { id:'carSlot2', category:'ev',     tag:'EV Compact',  name:'Geely EX2 Max',       price:'Rp 269.900.000', specs:['Listrik Murni','5 Kursi','Jarak ±395 km'],     shape:'hatchback' },
+    { id:'carSlot3', category:'turbo',  tag:'SUV Turbo',   name:'Geely Coolray',       price:'Rp 333.000.000', specs:['Bensin Turbo','5 Kursi','DCT 7-Speed'],        shape:'suv' },
+    { id:'carSlot4', category:'hybrid', tag:'SUV Premium', name:'Geely Starray EM-i',  price:'Rp 499.800.000', specs:['Hybrid EM-i','5 Kursi','CVT'],                 shape:'suv' },
+    { id:'carSlot5', category:'ev',     tag:'SUV Listrik', name:'Geely EX5 Pro',       price:'Rp 465.000.000', specs:['Listrik Murni','5 Kursi','Jarak ±430 km'],     shape:'suv' },
+    { id:'carSlot6', category:'ev',     tag:'SUV Listrik', name:'Geely EX5 Max',       price:'Rp 505.000.000', specs:['Listrik Murni','5 Kursi','Fast Charging DC'],  shape:'suv' }
   ];
 
   const SHAPE_PATHS = {
-    hatchback: '<path d="M10 55 C15 35 40 28 60 27 L75 15 C85 10 130 10 142 16 L165 28 C180 30 192 40 195 52 L195 58 L10 58 Z" fill="#c7cdd3"/><circle cx="55" cy="58" r="12" fill="#15181c"/><circle cx="155" cy="58" r="12" fill="#15181c"/>',
-    sedan:     '<path d="M6 56 C10 38 32 30 55 29 L72 15 C85 8 132 8 148 16 L172 29 C186 31 195 42 197 53 L197 58 L6 58 Z" fill="#c7cdd3"/><circle cx="55" cy="58" r="12" fill="#15181c"/><circle cx="158" cy="58" r="12" fill="#15181c"/>',
-    mpv:       '<path d="M8 55 C12 30 35 26 55 26 L68 14 C80 8 135 8 150 15 L172 26 C185 29 194 40 196 52 L196 58 L8 58 Z" fill="#c7cdd3"/><circle cx="52" cy="58" r="12" fill="#15181c"/><circle cx="158" cy="58" r="12" fill="#15181c"/>',
-    suv:       '<path d="M6 55 C10 26 28 20 48 20 L62 10 C76 4 140 4 158 11 L182 22 C193 25 197 38 198 52 L198 58 L6 58 Z" fill="#c7cdd3"/><circle cx="50" cy="58" r="14" fill="#15181c"/><circle cx="162" cy="58" r="14" fill="#15181c"/>',
-    sport:     '<path d="M8 58 C12 42 30 32 52 30 L70 16 C82 9 128 9 140 16 L162 30 C182 33 194 44 197 54 L197 59 L8 59 Z" fill="#c7cdd3"/><circle cx="52" cy="59" r="11" fill="#15181c"/><circle cx="155" cy="59" r="11" fill="#15181c"/>',
-    pickup:    '<path d="M6 55 L6 40 L60 40 L78 20 L110 20 L110 40 L198 40 L198 58 L6 58 Z" fill="#c7cdd3"/><circle cx="45" cy="58" r="13" fill="#15181c"/><circle cx="168" cy="58" r="13" fill="#15181c"/>',
-    van:       '<path d="M6 55 L6 24 C6 18 12 15 18 15 L188 15 C194 15 198 20 198 26 L198 55 L198 58 L6 58 Z" fill="#c7cdd3"/><circle cx="42" cy="58" r="13" fill="#15181c"/><circle cx="162" cy="58" r="13" fill="#15181c"/>'
+    hatchback: '<path d="M10 55 C15 35 40 28 60 27 L75 15 C85 10 130 10 142 16 L165 28 C180 30 192 40 195 52 L195 58 L10 58 Z" fill="#c3cfe4"/><circle cx="55" cy="58" r="12" fill="#0a0f1c"/><circle cx="155" cy="58" r="12" fill="#0a0f1c"/><circle cx="55" cy="58" r="5" fill="#28e0ff" opacity="0.7"/><circle cx="155" cy="58" r="5" fill="#28e0ff" opacity="0.7"/>',
+    suv:       '<path d="M6 55 C10 26 28 20 48 20 L62 10 C76 4 140 4 158 11 L182 22 C193 25 197 38 198 52 L198 58 L6 58 Z" fill="#c3cfe4"/><circle cx="50" cy="58" r="14" fill="#0a0f1c"/><circle cx="162" cy="58" r="14" fill="#0a0f1c"/><circle cx="50" cy="58" r="6" fill="#28e0ff" opacity="0.7"/><circle cx="162" cy="58" r="6" fill="#28e0ff" opacity="0.7"/>'
   };
 
   function carCardHtml(m){
+    const isEv = m.category === 'ev';
     return `
       <div class="car-card reveal in" data-category="${m.category}">
-        <div class="tag">${m.tag}</div>
+        <div class="tag">${isEv ? '<span class="ev-dot"></span>' : ''}${m.tag}</div>
         <h3>${m.name}</h3>
         <div class="img-slot card-slot" id="${m.id}">
           <svg class="placeholder-svg" viewBox="0 0 200 80" width="160">${SHAPE_PATHS[m.shape]}</svg>
@@ -845,9 +816,9 @@
 
   // ===== Ulasan Pelanggan (rating custom oleh customer) =====
   const defaultReviews = [
-    { name:'Rangga P.', model:'Avanza, Bekasi', rating:5, text:'Proses pengajuan kreditnya cepat, DP juga bisa disesuaikan. Mobil datang sesuai jadwal.', ts:3, seed:true },
-    { name:'Dewi S.', model:'Innova Zenix, Depok', rating:5, text:'Sales-nya sabar jelasin tiap fitur, sampai bandingin beberapa tipe biar sesuai kebutuhan keluarga.', ts:2, seed:true },
-    { name:'Fajar A.', model:'Fortuner, Tangerang', rating:5, text:'Trade-in mobil lama saya dihargai wajar, uang mukanya langsung dipotong di hari yang sama.', ts:1, seed:true }
+    { name:'Bimo S.', model:'EX5, Bekasi', rating:5, text:'Jarak tempuhnya sesuai klaim, home charger juga dipasang gratis di rumah dalam 2 hari.', ts:3, seed:true },
+    { name:'Nadia R.', model:'Coolray, Depok', rating:5, text:'Tenaga turbo-nya responsif dan tampilan interior berasa lebih premium dari kelas harganya.', ts:2, seed:true },
+    { name:'Yusuf A.', model:'EX2, Tangerang', rating:5, text:'Cocok buat commuting harian, pengisian dayanya cepat dan servisnya mudah dijangkau.', ts:1, seed:true }
   ];
   let allReviews = [...defaultReviews];
   let selectedRating = 0;
@@ -918,7 +889,6 @@
     allReviews.push(review);
     renderReviews();
 
-    // Simpan agar terlihat oleh pengunjung lain (jika penyimpanan tersedia)
     if(hasStorage){
       try{
         await window.storage.set('review:' + review.ts, JSON.stringify(review), true);
@@ -937,7 +907,6 @@
     starHint.textContent = 'Klik bintang untuk memberi rating';
   });
 
-  // Muat ulasan tersimpan dari pengunjung lain (jika ada)
   async function loadStoredReviews(){
     if(!hasStorage){ renderReviews(); return; }
     try{
