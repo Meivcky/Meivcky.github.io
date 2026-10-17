@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Geely Maju Mandala Mobilindo — Masa Depan Berkendara, Hari Ini</title>
+<title>Sentosa Geely Center — Masa Depan Berkendara, Hari Ini</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
@@ -125,7 +125,7 @@
     filter:blur(6px);
   }
 
-  /* ===== IMAGE SLOT (bisa diganti gambar) ===== */
+  /* ===== IMAGE SLOT (foto dari Supabase Storage, fallback ke ilustrasi) ===== */
   .img-slot{
     position:relative;
     display:flex; align-items:center; justify-content:center;
@@ -134,80 +134,9 @@
   }
   .img-slot.hero-slot{ min-height:260px; }
   .img-slot.card-slot{ height:150px; background:rgba(238,243,251,0.02); border-radius:4px; }
-  .img-slot img.uploaded-photo{
+  .img-slot img.car-photo{
     position:absolute; inset:0; width:100%; height:100%; object-fit:cover;
   }
-  .img-slot .placeholder-svg{ transition:opacity .2s; }
-  .img-slot.has-photo .placeholder-svg{ display:none; }
-  .upload-btn, .remove-photo{ display:none; } /* hanya tampil saat mode admin aktif */
-  body.admin-mode .upload-btn, body.admin-mode .remove-photo{ display:flex; }
-  .upload-btn{
-    position:absolute; right:8px; bottom:8px; z-index:5;
-    background:rgba(7,11,20,0.85); border:1px solid var(--line);
-    color:var(--paper); font-family:'JetBrains Mono',monospace;
-    font-size:11px; letter-spacing:0.03em; text-transform:uppercase;
-    padding:8px 12px; border-radius:20px; cursor:pointer;
-    align-items:center; gap:6px;
-    opacity:0; transition:opacity .2s, background .2s;
-  }
-  body.admin-mode .img-slot:hover .upload-btn, body.admin-mode .upload-btn:focus{ opacity:1; }
-  .upload-btn:hover{ background:var(--blue); border-color:var(--blue); }
-  .upload-btn svg{width:13px; height:13px;}
-  .upload-btn input[type="file"]{
-    position:absolute; inset:0; opacity:0; cursor:pointer; width:100%; height:100%;
-  }
-  .remove-photo{
-    position:absolute; left:8px; top:8px; z-index:5;
-    background:rgba(7,11,20,0.85); border:1px solid var(--line); color:var(--paper);
-    font-size:11px; padding:6px 9px; border-radius:20px; cursor:pointer;
-    opacity:0; transition:opacity .2s;
-    font-family:'JetBrains Mono',monospace;
-  }
-  body.admin-mode .img-slot.has-photo:hover .remove-photo{ opacity:1; }
-  @media(max-width:760px){
-    body.admin-mode .upload-btn, body.admin-mode .remove-photo{ opacity:1; }
-  }
-  body.admin-mode .img-slot{ outline:1px dashed rgba(40,224,255,0.5); outline-offset:2px; }
-
-  /* ===== MODE ADMIN ===== */
-  .admin-toggle{
-    position:fixed; right:18px; bottom:18px; z-index:80;
-    background:var(--charcoal); border:1px solid var(--line); color:var(--silver);
-    font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:0.04em;
-    padding:10px 14px; border-radius:20px; cursor:pointer;
-    display:flex; align-items:center; gap:7px;
-    box-shadow:0 4px 16px rgba(0,0,0,0.45);
-  }
-  .admin-toggle:hover{ border-color:var(--blue); color:var(--paper); }
-  .admin-toggle .dot{ width:7px; height:7px; border-radius:50%; background:var(--steel); }
-  body.admin-mode .admin-toggle .dot{ background:var(--cyan); }
-  body.admin-mode .admin-toggle{ border-color:var(--cyan); color:var(--paper); }
-
-  .admin-overlay{
-    position:fixed; inset:0; background:rgba(4,6,12,0.75); backdrop-filter:blur(3px);
-    display:none; align-items:center; justify-content:center; z-index:100; padding:20px;
-  }
-  .admin-overlay.show{ display:flex; }
-  .admin-modal{
-    background:var(--charcoal); border:1px solid var(--line); border-radius:10px;
-    padding:28px; width:100%; max-width:340px;
-  }
-  .admin-modal h3{ font-size:16px; font-family:'Inter',sans-serif; margin-bottom:6px; }
-  .admin-modal p{ font-size:13px; color:var(--silver); margin-bottom:16px; }
-  .admin-modal input{
-    width:100%; background:var(--ink); border:1px solid var(--line); color:var(--paper);
-    padding:12px 13px; font-family:'Inter',sans-serif; font-size:14px; border-radius:6px; margin-bottom:10px;
-  }
-  .admin-modal input:focus{ outline:2px solid var(--blue); outline-offset:1px; border-color:var(--blue); }
-  .admin-modal-actions{ display:flex; gap:10px; margin-top:6px; }
-  .admin-modal-actions button{
-    flex:1; padding:11px 14px; border-radius:20px; font-size:13px; font-weight:600; cursor:pointer;
-    font-family:'Inter',sans-serif;
-  }
-  .admin-modal-actions .btn-confirm{ background:var(--blue); border:1px solid var(--blue); color:#fff; }
-  .admin-modal-actions .btn-confirm:hover{ background:var(--blue-deep); }
-  .admin-modal-actions .btn-cancel{ background:transparent; border:1px solid var(--line); color:var(--silver); }
-  #adminError{ font-size:12.5px; color:#ff5c72; margin:-4px 0 10px; display:none; }
 
   /* ===== CHARGE STATS STRIP (signature) ===== */
   .plate-strip{
@@ -319,43 +248,97 @@
   .stars{color:var(--cyan); font-size:13px; margin-bottom:10px; letter-spacing:2px;}
   @media(max-width:900px){ .testi-grid{grid-template-columns:1fr; gap:36px;} }
 
-  /* ===== RATING SUMMARY ===== */
-  .rating-summary{
-    display:flex; align-items:center; gap:18px; margin-bottom:36px;
-    font-family:'JetBrains Mono',monospace;
-  }
-  .rating-summary .avg{font-size:38px; font-weight:700; color:var(--cyan); line-height:1;}
-  .rating-summary .stars-static{color:var(--cyan); font-size:18px; letter-spacing:2px;}
-  .rating-summary .count{color:var(--silver); font-size:13px;}
 
-  /* ===== TESTI CARD (dinamis) ===== */
-  .testi-card{ position:relative; }
-  .testi-card .badge-you{
-    position:absolute; top:0; right:0; background:var(--blue); color:#fff;
-    font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:0.05em;
-    text-transform:uppercase; padding:4px 8px; border-radius:20px;
+  /* ===== UPLOAD FOTO (hanya admin) ===== */
+  .img-slot .placeholder-svg{ transition:opacity .2s; }
+  .upload-btn, .remove-photo{ display:none; }
+  body.admin-mode .upload-btn, body.admin-mode .remove-photo{ display:flex; }
+  .upload-btn{
+    position:absolute; right:8px; bottom:8px; z-index:5;
+    background:rgba(7,11,20,0.85); border:1px solid var(--line);
+    color:var(--paper); font-family:'JetBrains Mono',monospace;
+    font-size:11px; letter-spacing:0.03em; text-transform:uppercase;
+    padding:8px 12px; border-radius:20px; cursor:pointer;
+    align-items:center; gap:6px;
+    opacity:0; transition:opacity .2s, background .2s;
+  }
+  body.admin-mode .img-slot:hover .upload-btn, body.admin-mode .upload-btn:focus-within{ opacity:1; }
+  .upload-btn:hover{ background:var(--blue); border-color:var(--blue); }
+  .upload-btn input[type="file"]{ position:absolute; inset:0; opacity:0; cursor:pointer; width:100%; height:100%; }
+  .remove-photo{
+    position:absolute; left:8px; top:8px; z-index:5;
+    background:rgba(7,11,20,0.85); border:1px solid var(--line); color:var(--paper);
+    font-size:11px; padding:6px 9px; border-radius:20px; cursor:pointer;
+    opacity:0; transition:opacity .2s; font-family:'JetBrains Mono',monospace;
+  }
+  body.admin-mode .img-slot.has-photo:hover .remove-photo{ opacity:1; }
+  @media(max-width:760px){ body.admin-mode .upload-btn, body.admin-mode .remove-photo{ opacity:1; } }
+  body.admin-mode .img-slot{ outline:1px dashed rgba(40,224,255,0.5); outline-offset:2px; }
+  .img-slot.uploading::after{
+    content:'Mengunggah…'; position:absolute; inset:0; z-index:6; display:flex; align-items:center; justify-content:center;
+    background:rgba(7,11,20,0.75); font-family:'JetBrains Mono',monospace; font-size:12px; color:var(--cyan);
   }
 
-  /* ===== FORM ULASAN ===== */
-  .review-form-wrap{
-    margin-top:56px; padding-top:44px; border-top:1px solid var(--line);
+  /* ===== ADMIN ===== */
+  .admin-toggle{
+    position:fixed; right:18px; bottom:18px; z-index:80;
+    background:var(--charcoal); border:1px solid var(--line); color:var(--silver);
+    font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:0.04em;
+    padding:10px 14px; border-radius:20px; cursor:pointer;
+    display:flex; align-items:center; gap:7px; box-shadow:0 4px 16px rgba(0,0,0,0.45);
   }
-  .review-form-wrap h3{
-    font-size:19px; margin-bottom:6px;
+  .admin-toggle:hover{ border-color:var(--blue); color:var(--paper); }
+  .admin-toggle .dot{ width:7px; height:7px; border-radius:50%; background:var(--steel); }
+  body.admin-mode .admin-toggle .dot{ background:var(--cyan); }
+  body.admin-mode .admin-toggle{ border-color:var(--cyan); color:var(--paper); }
+  .admin-overlay{
+    position:fixed; inset:0; background:rgba(4,6,12,0.75); backdrop-filter:blur(3px);
+    display:none; align-items:center; justify-content:center; z-index:100; padding:20px;
   }
-  .review-form-wrap > p{ color:var(--silver); font-size:14px; margin-bottom:22px; max-width:480px; }
-  .review-form-grid{
-    display:grid; grid-template-columns:1fr 1fr; gap:16px 20px;
+  .admin-overlay.show{ display:flex; }
+  .admin-modal{
+    background:var(--charcoal); border:1px solid var(--line); border-radius:10px;
+    padding:28px; width:100%; max-width:380px; max-height:86vh; overflow-y:auto;
   }
+  .admin-modal.wide{ max-width:600px; }
+  .admin-modal h3{ font-size:17px; margin-bottom:6px; }
+  .admin-modal p.sub{ font-size:13px; color:var(--silver); margin-bottom:16px; }
+  .admin-modal input{
+    width:100%; background:var(--ink); border:1px solid var(--line); color:var(--paper);
+    padding:12px 13px; font-size:14px; border-radius:6px; margin-bottom:10px;
+  }
+  .modal-actions{ display:flex; gap:10px; margin-top:10px; }
+  .modal-actions button{
+    flex:1; padding:11px 14px; border-radius:20px; font-size:13px; font-weight:600; cursor:pointer;
+    font-family:'Inter',sans-serif; background:transparent; border:1px solid var(--line); color:var(--silver);
+  }
+  .modal-actions .primary{ background:var(--blue); border-color:var(--blue); color:#fff; }
+  .modal-err{ font-size:12.5px; color:#ff5c72; margin:-2px 0 8px; min-height:1em; }
+  .mod-item{ border:1px solid var(--line); border-radius:8px; padding:14px; margin-bottom:10px; }
+  .mod-item .meta{ font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--silver); margin-bottom:6px; display:flex; gap:10px; flex-wrap:wrap; }
+  .mod-item .badge{ padding:2px 8px; border-radius:20px; font-size:10px; text-transform:uppercase; }
+  .mod-item .badge.pending{ background:#5a4300; color:#ffd36b; }
+  .mod-item .badge.ok{ background:#06402f; color:#6ff0c0; }
+  .mod-item p{ font-size:14px; margin-bottom:10px; word-break:break-word; }
+  .mod-item .btns{ display:flex; gap:8px; }
+  .mod-item .btns button{ padding:7px 14px; border-radius:20px; border:1px solid var(--line); background:transparent; color:var(--paper); cursor:pointer; font-size:12px; font-weight:600; }
+  .mod-item .btns .approve{ background:var(--blue); border-color:var(--blue); }
+  .mod-item .btns .del{ color:#ff8a9a; }
+
+  /* ===== ULASAN ===== */
+  .rating-summary{ display:flex; align-items:center; gap:18px; margin-bottom:36px; font-family:'JetBrains Mono',monospace; }
+  .rating-summary[hidden]{ display:none; }
+  .rating-summary .avg{ font-size:38px; font-weight:700; color:var(--cyan); line-height:1; }
+  .rating-summary .stars-static{ color:var(--cyan); font-size:18px; letter-spacing:2px; }
+  .rating-summary .count{ color:var(--silver); font-size:13px; }
+  .no-reviews{ color:var(--silver); font-size:15px; }
+  .review-form-wrap{ margin-top:56px; padding-top:44px; border-top:1px solid var(--line); }
+  .review-form-wrap h3{ font-size:19px; margin-bottom:6px; }
+  .review-form-wrap > p{ color:var(--silver); font-size:14px; margin-bottom:22px; max-width:520px; }
+  .review-form-grid{ display:grid; grid-template-columns:1fr 1fr; gap:16px 20px; }
   .review-form-grid .full{ grid-column:1 / -1; }
-  .star-input{
-    display:flex; gap:6px; margin-bottom:4px;
-  }
-  .star-input button{
-    background:none; border:none; cursor:pointer; padding:2px;
-    font-size:30px; line-height:1; color:var(--steel);
-    transition:color .15s, transform .1s;
-  }
+  .star-input{ display:flex; gap:6px; margin-bottom:4px; }
+  .star-input button{ background:none; border:none; cursor:pointer; padding:2px; font-size:30px; line-height:1; color:var(--steel); transition:color .15s, transform .1s; }
   .star-input button:hover, .star-input button:focus{ transform:scale(1.1); }
   .star-input button.active{ color:var(--cyan); }
   .star-hint{ font-size:12px; color:var(--silver); margin-bottom:18px; font-family:'JetBrains Mono',monospace; }
@@ -365,9 +348,10 @@
     border-radius:6px; resize:vertical; min-height:90px;
   }
   textarea:focus{ outline:2px solid var(--blue); outline-offset:1px; border-color:var(--blue); }
+  .hp-field{ position:absolute; left:-9999px; width:1px; height:1px; overflow:hidden; }
   #reviewNote{ font-size:13px; color:var(--silver); margin-top:10px; }
   #reviewNote.success{ color:var(--cyan); }
-  @media(max-width:640px){ .review-form-grid{grid-template-columns:1fr;} }
+  @media(max-width:640px){ .review-form-grid{ grid-template-columns:1fr; } }
 
   /* ===== CTA / CONTACT ===== */
   .cta-band{
@@ -424,7 +408,7 @@
 
 <header>
   <nav>
-    <div class="brand"><span class="mark"></span>Geely Maju Mandala Mobilindo <span style="color:var(--silver); font-weight:400; font-size:13px; margin-left:4px;">| Dealer Resmi Geely</span></div>
+    <div class="brand"><span class="mark"></span>Sentosa Geely Center <span style="color:var(--silver); font-weight:400; font-size:13px; margin-left:4px;">| Dealer Resmi Geely</span></div>
     <div class="nav-links nav-mobile-hide">
       <a href="#lineup">Lini Model</a>
       <a href="#promo">Promo</a>
@@ -447,7 +431,7 @@
       </div>
     </div>
     <div class="car-wrap">
-      <div class="img-slot hero-slot" id="heroSlot">
+      <div class="img-slot hero-slot" data-slot="hero" data-alt="Geely">
         <svg class="placeholder-svg" viewBox="0 0 520 260" xmlns="http://www.w3.org/2000/svg">
           <ellipse cx="260" cy="215" rx="210" ry="16" fill="rgba(0,96,255,0.25)"/>
           <path d="M40 175 C50 118 105 92 155 90 L195 66 C218 55 305 54 335 65 L390 90 C432 95 470 118 480 160 L480 178 L40 178 Z" fill="#dfe7f5"/>
@@ -460,12 +444,8 @@
           <rect x="362" y="118" width="20" height="8" fill="#28e0ff"/>
           <rect x="58" y="120" width="18" height="8" fill="#28e0ff"/>
         </svg>
-        <button class="remove-photo" onclick="removePhoto('heroSlot')" title="Hapus foto">✕ Hapus</button>
-        <label class="upload-btn">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 16l4.586-4.586a2 2 0 0 1 2.828 0L16 16"/><path d="M14 14l1.586-1.586a2 2 0 0 1 2.828 0L20 14"/><circle cx="8" cy="8" r="2"/><rect x="3" y="4" width="18" height="16" rx="2"/></svg>
-          Ganti Foto
-          <input type="file" accept="image/*" onchange="handlePhotoUpload(event, 'heroSlot')">
-        </label>
+        <button class="remove-photo" data-remove="hero" title="Hapus foto">✕ Hapus</button>
+        <label class="upload-btn">📷 Ganti Foto<input type="file" accept="image/*" data-upload="hero"></label>
       </div>
       <div class="plate"></div>
     </div>
@@ -515,7 +495,7 @@
   <div class="container">
     <div class="sec-head reveal">
       <div>
-        <div class="eyebrow">// Kenapa Geely Maju Mandala Mobilindo</div>
+        <div class="eyebrow">// Kenapa Sentosa Geely Center</div>
         <h2>Beli Mobil Listrik, Tanpa Ragu</h2>
       </div>
       <p>Proses cepat, transparan, dan didampingi tim sales yang paham teknologi EV dari awal survei sampai serah terima unit.</p>
@@ -554,22 +534,21 @@
       </div>
     </div>
 
-    <div class="rating-summary reveal">
-      <div class="avg" id="ratingAvg">5.0</div>
+    <div class="rating-summary reveal" id="ratingSummary" hidden>
+      <div class="avg" id="ratingAvg">0.0</div>
       <div>
-        <div class="stars-static" id="ratingStars">★★★★★</div>
-        <div class="count" id="ratingCount">berdasarkan 3 ulasan</div>
+        <div class="stars-static" id="ratingStars">☆☆☆☆☆</div>
+        <div class="count" id="ratingCount"></div>
       </div>
     </div>
 
-    <div class="testi-grid" id="testiGrid">
-      <!-- Kartu ulasan dirender otomatis lewat JS -->
-    </div>
+    <div class="testi-grid" id="testiGrid"></div>
+    <p class="no-reviews" id="noReviews" hidden>Belum ada ulasan. Jadilah yang pertama membagikan pengalaman Anda.</p>
 
     <div class="review-form-wrap reveal">
       <h3>Bagikan Pengalaman Anda</h3>
-      <p>Sudah pernah beli atau servis di Geely Maju Mandala Mobilindo? Beri rating dan ceritakan pengalaman Anda — ulasan akan langsung tampil di halaman ini.</p>
-      <form id="reviewForm">
+      <p>Sudah pernah membeli atau servis di Sentosa Geely Center? Beri rating dan ceritakan pengalaman Anda. Ulasan akan tampil setelah ditinjau oleh admin.</p>
+      <form id="reviewForm" novalidate>
         <div class="star-input" id="starInput" role="radiogroup" aria-label="Pilih rating bintang">
           <button type="button" data-value="1" aria-label="1 bintang">★</button>
           <button type="button" data-value="2" aria-label="2 bintang">★</button>
@@ -581,19 +560,20 @@
         <div class="review-form-grid">
           <div class="field">
             <label for="reviewName">Nama Anda</label>
-            <input id="reviewName" type="text" placeholder="Nama Anda" required>
+            <input id="reviewName" type="text" maxlength="60" placeholder="Nama Anda">
           </div>
           <div class="field">
             <label for="reviewModel">Model Geely (opsional)</label>
-            <input id="reviewModel" type="text" placeholder="Contoh: EX5, Coolray">
+            <input id="reviewModel" type="text" maxlength="60" placeholder="Contoh: EX5, Coolray">
           </div>
           <div class="field full">
             <label for="reviewText">Ulasan Anda</label>
-            <textarea id="reviewText" placeholder="Ceritakan pengalaman Anda membeli atau menggunakan Geely di sini..." required></textarea>
+            <textarea id="reviewText" maxlength="500" placeholder="Ceritakan pengalaman Anda membeli atau menggunakan Geely di sini..."></textarea>
           </div>
         </div>
-        <button type="submit" class="submit-btn">Kirim Ulasan</button>
-        <p id="reviewNote"></p>
+        <div class="hp-field" aria-hidden="true"><label>Website <input id="reviewWebsite" type="text" tabindex="-1" autocomplete="off"></label></div>
+        <button type="submit" class="submit-btn" id="reviewSubmit">Kirim Ulasan</button>
+        <p id="reviewNote" role="status"></p>
       </form>
     </div>
   </div>
@@ -643,12 +623,12 @@
       </form>
       <div>
         <div class="info-block">
-          <h3>Geely Maju Mandala Mobilindo</h3>
-          <p>Jl Batu Tulis Raya No 15 Kebon Kelapa Jakarta Pusat — buka Senin–Sabtu, 08.00–20.00 WIB.</p>
+          <h3>Sentosa Geely Center</h3>
+          <p>Jl. Raya Sudirman No. 88, Jakarta Selatan — buka Senin–Sabtu, 08.00–20.00 WIB.</p>
         </div>
         <div class="info-block">
           <h3>WhatsApp Sales</h3>
-          <p>+62 852-1111-7708 — respon cepat untuk simulasi kredit & jadwal test drive.</p>
+          <p>+62 812-3456-7890 — respon cepat untuk simulasi kredit & jadwal test drive.</p>
         </div>
         <div class="info-block">
           <h3>Layanan Purna Jual</h3>
@@ -661,335 +641,360 @@
 
 <footer>
   <div class="container" style="display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px; width:100%;">
-    <span>© 2026 Geely Maju Mandala Mobilindo — Dealer Resmi Geely.</span>
+    <span>© 2026 Sentosa Geely Center — Dealer Resmi Geely.</span>
     <span>Halaman promosi ini dibuat untuk keperluan demonstrasi.</span>
   </div>
 </footer>
 
+<button class="admin-toggle" id="adminToggle" title="Admin"><span class="dot"></span><span id="adminToggleLabel">Admin</span></button>
+
+<div class="admin-overlay" id="adminOverlay">
+  <div class="admin-modal" id="adminModal">
+    <div id="loginView">
+      <h3>Masuk Admin</h3>
+      <p class="sub">Khusus pengelola situs. Setelah masuk, Anda bisa mengganti foto dan menyetujui ulasan.</p>
+      <input type="email" id="adminEmail" placeholder="Email admin" autocomplete="username">
+      <input type="password" id="adminPassword" placeholder="Kata sandi" autocomplete="current-password">
+      <div class="modal-err" id="loginErr"></div>
+      <div class="modal-actions">
+        <button type="button" id="loginCancel">Batal</button>
+        <button type="button" class="primary" id="loginSubmit">Masuk</button>
+      </div>
+    </div>
+    <div id="adminView" hidden>
+      <h3>Panel Admin</h3>
+      <p class="sub">Arahkan kursor ke foto mobil di halaman untuk mengganti fotonya. Di bawah ini daftar ulasan pelanggan.</p>
+      <div id="modList"></div>
+      <div class="modal-actions">
+        <button type="button" id="adminClose">Tutup</button>
+        <button type="button" id="adminLogout">Keluar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
 <script>
-  // ===== Data lini Geely yang benar-benar dijual di Indonesia =====
-  // Harga bersifat indikatif (OTR Jabodetabek, per estimasi 2026) dan dapat berubah sewaktu-waktu.
+  // =====================================================================
+  //  PENGATURAN SUPABASE  — tempel 2 nilai dari Project Settings > API
+  //  (aman ditaruh di sini; yang melindungi data adalah aturan di database)
+  // =====================================================================
+  const SUPABASE_URL      = 'GANTI_DENGAN_PROJECT_URL';
+  const SUPABASE_ANON_KEY = 'GANTI_DENGAN_ANON_KEY';
+  const BUCKET = 'car-photos';
+
+  const configured = !SUPABASE_URL.startsWith('GANTI') && !SUPABASE_ANON_KEY.startsWith('GANTI') && window.supabase;
+  const sb = configured ? window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY) : null;
+
+  // ===== Data lini Geely =====
+  // Harga bersifat indikatif (OTR Jabodetabek) dan dapat berubah sewaktu-waktu.
   const CATEGORIES = [
     { key:'all', label:'Semua' },
     { key:'ev', label:'Listrik (EV)' },
     { key:'hybrid', label:'Hybrid' },
     { key:'turbo', label:'Bensin Turbo' }
   ];
-
   const CAR_MODELS = [
-    { id:'carSlot1', category:'ev',     tag:'EV Compact',  name:'Geely EX2 Pro',       price:'Rp 239.900.000', specs:['Listrik Murni','5 Kursi','Baterai 40,8 kWh'],  shape:'hatchback' },
-    { id:'carSlot2', category:'ev',     tag:'EV Compact',  name:'Geely EX2 Max',       price:'Rp 269.900.000', specs:['Listrik Murni','5 Kursi','Jarak ±395 km'],     shape:'hatchback' },
-    { id:'carSlot3', category:'turbo',  tag:'SUV Turbo',   name:'Geely Coolray',       price:'Rp 333.000.000', specs:['Bensin Turbo','5 Kursi','DCT 7-Speed'],        shape:'suv' },
-    { id:'carSlot4', category:'hybrid', tag:'SUV Premium', name:'Geely Starray EM-i',  price:'Rp 499.800.000', specs:['Hybrid EM-i','5 Kursi','CVT'],                 shape:'suv' },
-    { id:'carSlot5', category:'ev',     tag:'SUV Listrik', name:'Geely EX5 Pro',       price:'Rp 465.000.000', specs:['Listrik Murni','5 Kursi','Jarak ±430 km'],     shape:'suv' },
-    { id:'carSlot6', category:'ev',     tag:'SUV Listrik', name:'Geely EX5 Max',       price:'Rp 505.000.000', specs:['Listrik Murni','5 Kursi','Fast Charging DC'],  shape:'suv' }
+    { photo:'ex2-pro',     category:'ev',     tag:'EV Compact',  name:'Geely EX2 Pro',      price:'Rp 239.900.000', specs:['Listrik Murni','5 Kursi','Baterai 40,8 kWh'], shape:'hatchback' },
+    { photo:'ex2-max',     category:'ev',     tag:'EV Compact',  name:'Geely EX2 Max',      price:'Rp 269.900.000', specs:['Listrik Murni','5 Kursi','Jarak ±395 km'],    shape:'hatchback' },
+    { photo:'coolray',     category:'turbo',  tag:'SUV Turbo',   name:'Geely Coolray',      price:'Rp 333.000.000', specs:['Bensin Turbo','5 Kursi','DCT 7-Speed'],       shape:'suv' },
+    { photo:'starray-emi', category:'hybrid', tag:'SUV Premium', name:'Geely Starray EM-i', price:'Rp 499.800.000', specs:['Hybrid EM-i','5 Kursi','CVT'],                shape:'suv' },
+    { photo:'ex5-pro',     category:'ev',     tag:'SUV Listrik', name:'Geely EX5 Pro',      price:'Rp 465.000.000', specs:['Listrik Murni','5 Kursi','Jarak ±430 km'],    shape:'suv' },
+    { photo:'ex5-max',     category:'ev',     tag:'SUV Listrik', name:'Geely EX5 Max',      price:'Rp 505.000.000', specs:['Listrik Murni','5 Kursi','Fast Charging DC'], shape:'suv' }
   ];
-
   const SHAPE_PATHS = {
     hatchback: '<path d="M10 55 C15 35 40 28 60 27 L75 15 C85 10 130 10 142 16 L165 28 C180 30 192 40 195 52 L195 58 L10 58 Z" fill="#c3cfe4"/><circle cx="55" cy="58" r="12" fill="#0a0f1c"/><circle cx="155" cy="58" r="12" fill="#0a0f1c"/><circle cx="55" cy="58" r="5" fill="#28e0ff" opacity="0.7"/><circle cx="155" cy="58" r="5" fill="#28e0ff" opacity="0.7"/>',
     suv:       '<path d="M6 55 C10 26 28 20 48 20 L62 10 C76 4 140 4 158 11 L182 22 C193 25 197 38 198 52 L198 58 L6 58 Z" fill="#c3cfe4"/><circle cx="50" cy="58" r="14" fill="#0a0f1c"/><circle cx="162" cy="58" r="14" fill="#0a0f1c"/><circle cx="50" cy="58" r="6" fill="#28e0ff" opacity="0.7"/><circle cx="162" cy="58" r="6" fill="#28e0ff" opacity="0.7"/>'
   };
 
+  function escapeHtml(str){
+    const d = document.createElement('div'); d.textContent = str == null ? '' : String(str); return d.innerHTML;
+  }
+
+  // ===== Lineup =====
   function carCardHtml(m){
     const isEv = m.category === 'ev';
     return `
       <div class="car-card reveal in" data-category="${m.category}">
         <div class="tag">${isEv ? '<span class="ev-dot"></span>' : ''}${m.tag}</div>
         <h3>${m.name}</h3>
-        <div class="img-slot card-slot" id="${m.id}">
+        <div class="img-slot card-slot" data-slot="${m.photo}" data-alt="${m.name}">
           <svg class="placeholder-svg" viewBox="0 0 200 80" width="160">${SHAPE_PATHS[m.shape]}</svg>
-          <button class="remove-photo" onclick="removePhoto('${m.id}')" title="Hapus foto">✕</button>
-          <label class="upload-btn">📷 Ganti Foto<input type="file" accept="image/*" onchange="handlePhotoUpload(event, '${m.id}')"></label>
+          <button class="remove-photo" data-remove="${m.photo}" title="Hapus foto">✕</button>
+          <label class="upload-btn">📷 Ganti Foto<input type="file" accept="image/*" data-upload="${m.photo}"></label>
         </div>
-        <div class="specs">${m.specs.map(s=>`<span>${s}</span>`).join('')}</div>
+        <div class="specs">${m.specs.map(x=>`<span>${x}</span>`).join('')}</div>
         <div class="price">${m.price}<small>OTR Jabodetabek — indikatif</small></div>
       </div>`;
   }
+  document.getElementById('lineupGrid').innerHTML = CAR_MODELS.map(carCardHtml).join('');
 
-  function renderLineup(){
-    document.getElementById('lineupGrid').innerHTML = CAR_MODELS.map(carCardHtml).join('');
-  }
-
-  function renderCatTabs(){
-    const wrap = document.getElementById('catTabs');
-    wrap.innerHTML = CATEGORIES.map((c,i)=>
-      `<button class="cat-tab${i===0?' active':''}" data-cat="${c.key}">${c.label}</button>`
-    ).join('');
-    wrap.querySelectorAll('.cat-tab').forEach(btn=>{
-      btn.addEventListener('click', ()=>{
-        wrap.querySelectorAll('.cat-tab').forEach(b=>b.classList.remove('active'));
-        btn.classList.add('active');
-        const cat = btn.dataset.cat;
-        document.querySelectorAll('#lineupGrid .car-card').forEach(card=>{
-          card.classList.toggle('hidden', cat !== 'all' && card.dataset.category !== cat);
-        });
+  const tabsWrap = document.getElementById('catTabs');
+  tabsWrap.innerHTML = CATEGORIES.map((c,i)=>`<button class="cat-tab${i===0?' active':''}" data-cat="${c.key}">${c.label}</button>`).join('');
+  tabsWrap.querySelectorAll('.cat-tab').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      tabsWrap.querySelectorAll('.cat-tab').forEach(b=>b.classList.remove('active'));
+      btn.classList.add('active');
+      const cat = btn.dataset.cat;
+      document.querySelectorAll('#lineupGrid .car-card').forEach(card=>{
+        card.classList.toggle('hidden', cat !== 'all' && card.dataset.category !== cat);
       });
     });
+  });
+
+  // ===== Foto (Supabase Storage) =====
+  const photoVersions = {};   // slot -> penanda versi (untuk menghindari cache lama)
+
+  function photoUrl(id){
+    const { data } = sb.storage.from(BUCKET).getPublicUrl(id + '.jpg');
+    return data.publicUrl + '?v=' + encodeURIComponent(photoVersions[id]);
   }
-
-  renderLineup();
-  renderCatTabs();
-
-  // ===== Kustomisasi gambar mobil (khusus admin, tersimpan untuk semua pengunjung) =====
-  const PHOTO_SLOT_IDS = ['heroSlot', ...CAR_MODELS.map(m => m.id)];
-  const hasPhotoStorage = typeof window.storage !== 'undefined' && window.storage;
-
-  function resizeImage(file, maxWidth){
+  function applySlot(slot){
+    const id = slot.dataset.slot;
+    let img = slot.querySelector('img.car-photo');
+    if(photoVersions[id]){
+      if(!img){
+        img = document.createElement('img');
+        img.className = 'car-photo';
+        img.alt = slot.dataset.alt || 'Foto mobil';
+        img.addEventListener('error', ()=>img.remove());
+        slot.insertBefore(img, slot.firstChild);
+      }
+      img.src = photoUrl(id);
+      slot.classList.add('has-photo');
+    } else {
+      if(img) img.remove();
+      slot.classList.remove('has-photo');
+    }
+  }
+  async function loadPhotos(){
+    if(!sb) return;
+    const { data, error } = await sb.storage.from(BUCKET).list('', { limit: 100 });
+    if(error){ console.error('Gagal memuat daftar foto:', error.message); return; }
+    (data || []).forEach(f=>{
+      if(/\.jpg$/.test(f.name)) photoVersions[f.name.replace(/\.jpg$/, '')] = f.updated_at || f.created_at || String(Date.now());
+    });
+    document.querySelectorAll('[data-slot]').forEach(applySlot);
+  }
+  function resizeToBlob(file, maxW){
     return new Promise((resolve, reject)=>{
-      const reader = new FileReader();
-      reader.onload = (e)=>{
-        const img = new Image();
-        img.onload = ()=>{
-          const scale = Math.min(1, maxWidth / img.width);
-          const canvas = document.createElement('canvas');
-          canvas.width = img.width * scale;
-          canvas.height = img.height * scale;
-          const ctx = canvas.getContext('2d');
-          ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-          resolve(canvas.toDataURL('image/jpeg', 0.82));
-        };
-        img.onerror = reject;
-        img.src = e.target.result;
+      const url = URL.createObjectURL(file);
+      const img = new Image();
+      img.onload = ()=>{
+        const sc = Math.min(1, maxW / img.width);
+        const c = document.createElement('canvas');
+        c.width = Math.round(img.width * sc); c.height = Math.round(img.height * sc);
+        c.getContext('2d').drawImage(img, 0, 0, c.width, c.height);
+        URL.revokeObjectURL(url);
+        c.toBlob(b => b ? resolve(b) : reject(new Error('Gagal mengubah gambar')), 'image/jpeg', 0.82);
       };
-      reader.onerror = reject;
-      reader.readAsDataURL(file);
+      img.onerror = ()=>{ URL.revokeObjectURL(url); reject(new Error('File bukan gambar yang valid')); };
+      img.src = url;
     });
   }
-
-  function applyPhotoToSlot(slotId, dataUrl){
-    const slot = document.getElementById(slotId);
-    if(!slot) return;
-    let img = slot.querySelector('img.uploaded-photo');
-    if(!img){
-      img = document.createElement('img');
-      img.className = 'uploaded-photo';
-      img.alt = 'Foto mobil';
-      slot.insertBefore(img, slot.firstChild);
-    }
-    img.src = dataUrl;
-    slot.classList.add('has-photo');
-  }
-
-  async function handlePhotoUpload(event, slotId){
-    const file = event.target.files && event.target.files[0];
-    if(!file) return;
-    if(!file.type.startsWith('image/')){
-      alert('Mohon pilih file gambar (JPG, PNG, atau WebP).');
-      return;
-    }
+  async function uploadPhoto(file, id){
+    if(!sb || !isAdmin) return;
+    if(!file.type.startsWith('image/')){ alert('Pilih file gambar (JPG, PNG, atau WebP).'); return; }
+    const slot = document.querySelector(`[data-slot="${id}"]`);
+    slot.classList.add('uploading');
     try{
-      const dataUrl = await resizeImage(file, 1000);
-      applyPhotoToSlot(slotId, dataUrl);
-      if(hasPhotoStorage){
-        await window.storage.set('photo:' + slotId, dataUrl, true);
-      }
+      const blob = await resizeToBlob(file, 1400);
+      const { error } = await sb.storage.from(BUCKET).upload(id + '.jpg', blob, { upsert:true, contentType:'image/jpeg', cacheControl:'60' });
+      if(error) throw error;
+      photoVersions[id] = new Date().toISOString();
+      applySlot(slot);
     }catch(err){
-      console.error('Gagal memproses gambar:', err);
-      alert('Gagal memproses gambar, coba file lain.');
+      console.error(err);
+      alert('Gagal mengunggah foto: ' + (err.message || 'coba lagi'));
+    }finally{
+      slot.classList.remove('uploading');
     }
   }
-
-  async function removePhoto(slotId){
-    const slot = document.getElementById(slotId);
-    if(!slot) return;
-    const img = slot.querySelector('img.uploaded-photo');
-    if(img) img.remove();
-    slot.classList.remove('has-photo');
-    const input = slot.querySelector('input[type="file"]');
-    if(input) input.value = '';
-    if(hasPhotoStorage){
-      try{ await window.storage.delete('photo:' + slotId, true); }
-      catch(err){ console.error('Gagal menghapus foto tersimpan:', err); }
-    }
+  async function removePhoto(id){
+    if(!sb || !isAdmin) return;
+    if(!confirm('Hapus foto ini?')) return;
+    const { error } = await sb.storage.from(BUCKET).remove([id + '.jpg']);
+    if(error){ alert('Gagal menghapus foto: ' + error.message); return; }
+    delete photoVersions[id];
+    applySlot(document.querySelector(`[data-slot="${id}"]`));
   }
+  document.addEventListener('change', (e)=>{
+    const input = e.target.closest('input[data-upload]');
+    if(!input) return;
+    const file = input.files && input.files[0];
+    if(file) uploadPhoto(file, input.dataset.upload);
+    input.value = '';
+  });
+  document.addEventListener('click', (e)=>{
+    const btn = e.target.closest('[data-remove]');
+    if(btn) removePhoto(btn.dataset.remove);
+  });
 
-  async function loadStoredPhotos(){
-    if(!hasPhotoStorage) return;
-    await Promise.all(PHOTO_SLOT_IDS.map(async (slotId)=>{
-      try{
-        const result = await window.storage.get('photo:' + slotId, true);
-        if(result && result.value){ applyPhotoToSlot(slotId, result.value); }
-      }catch(_){ /* belum ada foto tersimpan untuk slot ini */ }
-    }));
-  }
-  loadStoredPhotos();
-
-  // ===== Ulasan Pelanggan (rating custom oleh customer) =====
-  const defaultReviews = [
-    { name:'Bimo S.', model:'EX5, Bekasi', rating:5, text:'Jarak tempuhnya sesuai klaim, home charger juga dipasang gratis di rumah dalam 2 hari.', ts:3, seed:true },
-    { name:'Nadia R.', model:'Coolray, Depok', rating:5, text:'Tenaga turbo-nya responsif dan tampilan interior berasa lebih premium dari kelas harganya.', ts:2, seed:true },
-    { name:'Yusuf A.', model:'EX2, Tangerang', rating:5, text:'Cocok buat commuting harian, pengisian dayanya cepat dan servisnya mudah dijangkau.', ts:1, seed:true }
-  ];
-  let allReviews = [...defaultReviews];
+  // ===== Ulasan (Supabase Database) =====
   let selectedRating = 0;
-  const hasStorage = typeof window.storage !== 'undefined' && window.storage;
-
-  function starsHtml(n){
-    let s = '';
-    for(let i=1;i<=5;i++){ s += i<=n ? '★' : '☆'; }
-    return s;
-  }
-
-  function renderReviews(){
-    const grid = document.getElementById('testiGrid');
-    const sorted = [...allReviews].sort((a,b)=> b.ts - a.ts);
-    grid.innerHTML = sorted.map(r => `
-      <div class="testi-card reveal in">
-        ${r.seed ? '' : '<div class="badge-you">Ulasan Baru</div>'}
-        <div class="stars">${starsHtml(r.rating)}</div>
-        <blockquote>${escapeHtml(r.text)}</blockquote>
-        <div class="who"><b>${escapeHtml(r.name)}</b>${r.model ? ' — ' + escapeHtml(r.model) : ''}</div>
-      </div>
-    `).join('');
-
-    const avg = allReviews.reduce((sum,r)=>sum+r.rating,0) / allReviews.length;
-    document.getElementById('ratingAvg').textContent = avg.toFixed(1);
-    document.getElementById('ratingStars').textContent = starsHtml(Math.round(avg));
-    document.getElementById('ratingCount').textContent = `berdasarkan ${allReviews.length} ulasan`;
-  }
-
-  function escapeHtml(str){
-    const div = document.createElement('div');
-    div.textContent = str;
-    return div.innerHTML;
-  }
-
-  // Rating bintang interaktif
   const starButtons = document.querySelectorAll('#starInput button');
   const starHint = document.getElementById('starHint');
+  const starsHtml = n => '★'.repeat(n) + '☆'.repeat(5 - n);
+
   starButtons.forEach(btn=>{
     btn.addEventListener('click', ()=>{
       selectedRating = parseInt(btn.dataset.value, 10);
-      starButtons.forEach(b=>{
-        b.classList.toggle('active', parseInt(b.dataset.value,10) <= selectedRating);
-      });
+      starButtons.forEach(b => b.classList.toggle('active', parseInt(b.dataset.value, 10) <= selectedRating));
       starHint.textContent = selectedRating + ' dari 5 bintang dipilih';
     });
   });
 
-  // Kirim ulasan
+  async function loadReviews(){
+    const grid = document.getElementById('testiGrid');
+    const empty = document.getElementById('noReviews');
+    const summary = document.getElementById('ratingSummary');
+    let rows = [];
+    if(sb){
+      const { data, error } = await sb.from('reviews').select('name, model, rating, text, created_at')
+        .eq('approved', true).order('created_at', { ascending:false }).limit(60);
+      if(error) console.error('Gagal memuat ulasan:', error.message); else rows = data || [];
+    }
+    grid.innerHTML = rows.map(r => `
+      <div class="testi-card reveal in">
+        <div class="stars">${starsHtml(r.rating)}</div>
+        <blockquote>${escapeHtml(r.text)}</blockquote>
+        <div class="who"><b>${escapeHtml(r.name)}</b>${r.model ? ' — ' + escapeHtml(r.model) : ''}</div>
+      </div>`).join('');
+    empty.hidden = rows.length > 0;
+    summary.hidden = rows.length === 0;
+    if(rows.length){
+      const avg = rows.reduce((t, r) => t + r.rating, 0) / rows.length;
+      document.getElementById('ratingAvg').textContent = avg.toFixed(1);
+      document.getElementById('ratingStars').textContent = starsHtml(Math.round(avg));
+      document.getElementById('ratingCount').textContent = `berdasarkan ${rows.length} ulasan`;
+    }
+  }
+
   document.getElementById('reviewForm').addEventListener('submit', async (e)=>{
     e.preventDefault();
     const note = document.getElementById('reviewNote');
-    if(selectedRating === 0){
-      note.textContent = 'Mohon pilih rating bintang terlebih dahulu.';
-      note.className = '';
-      return;
-    }
-    const name = document.getElementById('reviewName').value.trim();
+    const btn = document.getElementById('reviewSubmit');
+    const setNote = (msg, ok) => { note.textContent = msg; note.className = ok ? 'success' : ''; };
+
+    if(!sb){ setNote('Fitur ulasan belum diaktifkan.', false); return; }
+    if(document.getElementById('reviewWebsite').value) return;           // honeypot anti-bot
+    const name  = document.getElementById('reviewName').value.trim();
     const model = document.getElementById('reviewModel').value.trim();
-    const text = document.getElementById('reviewText').value.trim();
-    if(!name || !text){
-      note.textContent = 'Mohon isi nama dan ulasan Anda.';
-      note.className = '';
-      return;
-    }
+    const text  = document.getElementById('reviewText').value.trim();
+    if(selectedRating === 0){ setNote('Mohon pilih rating bintang terlebih dahulu.', false); return; }
+    if(!name || !text){ setNote('Mohon isi nama dan ulasan Anda.', false); return; }
 
-    const review = { name, model, rating: selectedRating, text, ts: Date.now(), seed:false };
-    allReviews.push(review);
-    renderReviews();
+    try{
+      const last = parseInt(localStorage.getItem('lastReviewAt') || '0', 10);
+      if(Date.now() - last < 60000){ setNote('Mohon tunggu sebentar sebelum mengirim ulasan lagi.', false); return; }
+    }catch(_){}
 
-    if(hasStorage){
-      try{
-        await window.storage.set('review:' + review.ts, JSON.stringify(review), true);
-      }catch(err){
-        console.error('Gagal menyimpan ulasan:', err);
-      }
-    }
-
-    note.textContent = hasStorage
-      ? 'Terima kasih! Ulasan Anda sudah tampil dan akan terlihat oleh pengunjung lain.'
-      : 'Terima kasih! Ulasan Anda tampil di halaman ini selama sesi ini berlangsung.';
-    note.className = 'success';
+    btn.disabled = true;
+    const { error } = await sb.from('reviews').insert({ name, model: model || null, rating: selectedRating, text });
+    btn.disabled = false;
+    if(error){ console.error(error.message); setNote('Maaf, ulasan gagal dikirim. Coba lagi nanti.', false); return; }
+    try{ localStorage.setItem('lastReviewAt', String(Date.now())); }catch(_){}
+    setNote('Terima kasih! Ulasan Anda terkirim dan akan tampil setelah ditinjau admin.', true);
     e.target.reset();
     selectedRating = 0;
-    starButtons.forEach(b=>b.classList.remove('active'));
+    starButtons.forEach(b => b.classList.remove('active'));
     starHint.textContent = 'Klik bintang untuk memberi rating';
   });
 
-  async function loadStoredReviews(){
-    if(!hasStorage){ renderReviews(); return; }
-    try{
-      const list = await window.storage.list('review:', true);
-      if(list && list.keys && list.keys.length){
-        const results = await Promise.all(list.keys.map(k => window.storage.get(k, true).catch(()=>null)));
-        results.forEach(r=>{
-          if(r && r.value){
-            try{ allReviews.push(JSON.parse(r.value)); }catch(_){}
-          }
-        });
-      }
-    }catch(err){
-      console.error('Gagal memuat ulasan:', err);
-    }
-    renderReviews();
-  }
-  loadStoredReviews();
+  // ===== Admin =====
+  let isAdmin = false;
+  const overlay = document.getElementById('adminOverlay');
+  const modal = document.getElementById('adminModal');
+  const loginView = document.getElementById('loginView');
+  const adminView = document.getElementById('adminView');
 
-  const els = document.querySelectorAll('.reveal');
+  function renderAdminUi(){
+    document.body.classList.toggle('admin-mode', isAdmin);
+    document.getElementById('adminToggleLabel').textContent = isAdmin ? 'Panel Admin' : 'Admin';
+    loginView.hidden = isAdmin;
+    adminView.hidden = !isAdmin;
+    modal.classList.toggle('wide', isAdmin);
+  }
+  function openAdmin(){
+    if(!sb){ alert('Supabase belum dikonfigurasi. Isi SUPABASE_URL dan SUPABASE_ANON_KEY di index.html.'); return; }
+    overlay.classList.add('show');
+    renderAdminUi();
+    if(isAdmin) loadModeration();
+  }
+  function closeAdmin(){ overlay.classList.remove('show'); }
+
+  async function loadModeration(){
+    const list = document.getElementById('modList');
+    list.innerHTML = '<p class="sub">Memuat…</p>';
+    const { data, error } = await sb.from('reviews').select('*').order('created_at', { ascending:false }).limit(100);
+    if(error){ list.innerHTML = '<p class="sub">Gagal memuat ulasan.</p>'; return; }
+    if(!data.length){ list.innerHTML = '<p class="sub">Belum ada ulasan masuk.</p>'; return; }
+    list.innerHTML = data.map(r => `
+      <div class="mod-item" data-id="${r.id}">
+        <div class="meta">
+          <span class="badge ${r.approved ? 'ok' : 'pending'}">${r.approved ? 'Tayang' : 'Menunggu'}</span>
+          <span>${starsHtml(r.rating)}</span>
+          <span>${escapeHtml(r.name)}${r.model ? ' · ' + escapeHtml(r.model) : ''}</span>
+          <span>${new Date(r.created_at).toLocaleString('id-ID')}</span>
+        </div>
+        <p>${escapeHtml(r.text)}</p>
+        <div class="btns">
+          ${r.approved ? '' : '<button class="approve" data-act="approve">Setujui</button>'}
+          <button class="del" data-act="delete">Hapus</button>
+        </div>
+      </div>`).join('');
+  }
+  document.getElementById('modList').addEventListener('click', async (e)=>{
+    const btn = e.target.closest('button[data-act]');
+    if(!btn || !isAdmin) return;
+    const id = btn.closest('.mod-item').dataset.id;
+    btn.disabled = true;
+    let error;
+    if(btn.dataset.act === 'approve'){
+      ({ error } = await sb.from('reviews').update({ approved:true }).eq('id', id));
+    } else {
+      if(!confirm('Hapus ulasan ini secara permanen?')){ btn.disabled = false; return; }
+      ({ error } = await sb.from('reviews').delete().eq('id', id));
+    }
+    if(error){ alert('Gagal: ' + error.message); btn.disabled = false; return; }
+    await loadModeration();
+    loadReviews();
+  });
+
+  document.getElementById('adminToggle').addEventListener('click', openAdmin);
+  document.getElementById('loginCancel').addEventListener('click', closeAdmin);
+  document.getElementById('adminClose').addEventListener('click', closeAdmin);
+  overlay.addEventListener('click', (e)=>{ if(e.target === overlay) closeAdmin(); });
+
+  async function doLogin(){
+    const err = document.getElementById('loginErr');
+    err.textContent = '';
+    const email = document.getElementById('adminEmail').value.trim();
+    const password = document.getElementById('adminPassword').value;
+    if(!email || !password){ err.textContent = 'Isi email dan kata sandi.'; return; }
+    const { error } = await sb.auth.signInWithPassword({ email, password });
+    if(error){ err.textContent = 'Email atau kata sandi salah.'; return; }
+    document.getElementById('adminPassword').value = '';
+    // status admin diperbarui oleh onAuthStateChange
+  }
+  document.getElementById('loginSubmit').addEventListener('click', doLogin);
+  document.getElementById('adminPassword').addEventListener('keydown', e=>{ if(e.key === 'Enter') doLogin(); });
+  document.getElementById('adminLogout').addEventListener('click', async ()=>{ await sb.auth.signOut(); closeAdmin(); });
+
+  if(sb){
+    sb.auth.onAuthStateChange((_event, session)=>{
+      isAdmin = !!session;
+      setTimeout(()=>{ renderAdminUi(); if(isAdmin && overlay.classList.contains('show')) loadModeration(); }, 0);
+    });
+  }
+
+  // ===== Mulai =====
+  loadPhotos();
+  loadReviews();
   const io = new IntersectionObserver((entries)=>{
     entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
-  }, {threshold:0.15});
-  els.forEach(el=>io.observe(el));
-</script>
-
-<button class="admin-toggle" id="adminToggle" title="Mode Admin"><span class="dot"></span> <span id="adminToggleLabel">Mode Admin</span></button>
-
-<div class="admin-overlay" id="adminOverlay">
-  <div class="admin-modal">
-    <h3>Masuk Mode Admin</h3>
-    <p>Masukkan kata sandi admin untuk mengaktifkan ganti foto. Perubahan akan tersimpan permanen untuk semua pengunjung.</p>
-    <input type="password" id="adminPassword" placeholder="Kata sandi admin" autocomplete="off">
-    <p id="adminError">Kata sandi salah, coba lagi.</p>
-    <div class="admin-modal-actions">
-      <button class="btn-cancel" id="adminCancel" type="button">Batal</button>
-      <button class="btn-confirm" id="adminConfirm" type="button">Masuk</button>
-    </div>
-  </div>
-</div>
-
-<script>
-  // ===== Mode Admin (ganti foto hanya untuk admin) =====
-  // GANTI kata sandi ini sesuai keinginan Anda:
-  const ADMIN_PASSWORD = 'meivcky358';
-
-  const adminToggle = document.getElementById('adminToggle');
-  const adminOverlay = document.getElementById('adminOverlay');
-  const adminPasswordInput = document.getElementById('adminPassword');
-  const adminError = document.getElementById('adminError');
-  const adminToggleLabel = document.getElementById('adminToggleLabel');
-
-  function setAdminMode(on){
-    document.body.classList.toggle('admin-mode', on);
-    adminToggleLabel.textContent = on ? 'Keluar Mode Admin' : 'Mode Admin';
-  }
-
-  adminToggle.addEventListener('click', ()=>{
-    if(document.body.classList.contains('admin-mode')){
-      setAdminMode(false);
-    } else {
-      adminOverlay.classList.add('show');
-      adminError.style.display = 'none';
-      adminPasswordInput.value = '';
-      adminPasswordInput.focus();
-    }
-  });
-
-  document.getElementById('adminCancel').addEventListener('click', ()=>{
-    adminOverlay.classList.remove('show');
-  });
-
-  document.getElementById('adminConfirm').addEventListener('click', confirmAdminLogin);
-  adminPasswordInput.addEventListener('keydown', (e)=>{ if(e.key === 'Enter') confirmAdminLogin(); });
-
-  function confirmAdminLogin(){
-    if(adminPasswordInput.value === ADMIN_PASSWORD){
-      setAdminMode(true);
-      adminOverlay.classList.remove('show');
-    } else {
-      adminError.style.display = 'block';
-    }
-  }
+  }, { threshold:0.15 });
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 </script>
 
 </body>
